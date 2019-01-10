@@ -1,4 +1,4 @@
-#Power Stack 🔌🥞
+# Power Stack 🔌🥞
 
 The Power Stack is a collection of all the best technologies providing you 
 with boilerplate to get a modern API-based containerised web app up and 
