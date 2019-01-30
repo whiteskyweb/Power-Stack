@@ -31,3 +31,4 @@ To get started with Power Stack please refer to the following documentation:
 [Installation](docs/install.md)
 
 [Available Variables](docs/variables.md)
+
