@@ -33,9 +33,9 @@ RUN docker-php-ext-install gd \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 # Copy across any custom php.ini files
-COPY ./infrastructure/configs/php-fpm/ /usr/local/etc/php/conf.d/
+COPY ./infrastructure/configuration/php-fpm/ /usr/local/etc/php/conf.d/
 
-# Copy across any custom php.ini files
+# Copy across any codebase
 COPY ./backend-code/ /var/www/
 
 
@@ -46,5 +46,7 @@ RUN chown -R www-data:www-data /var/www
 USER www-data
 
 RUN composer install -vvv
+
+VOLUME /var/www/web
 
 WORKDIR /var/www/web
