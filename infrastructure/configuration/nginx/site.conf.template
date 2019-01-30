@@ -78,6 +78,10 @@ server {
     # pattern with front controllers other than update.php in a future
     # release.
     location ~ '\.php$|^/update.php' {
+        resolver 127.0.0.11;
+        set $upstream php:9000;
+        # nginx will now start if host is not reachable
+
         fastcgi_split_path_info ^(.+?\.php)(|/.*)$;
         # Security note: If you're running a version of PHP older than the
         # latest 5.3, you should have "cgi.fix_pathinfo = 0;" in php.ini.
@@ -90,7 +94,7 @@ server {
         fastcgi_param QUERY_STRING $query_string;
         fastcgi_intercept_errors on;
         # PHP 7 socket location.
-        fastcgi_pass php:9000;
+        fastcgi_pass  $upstream;
     }
 
     # Fighting with Styles? This little gem is amazing.
