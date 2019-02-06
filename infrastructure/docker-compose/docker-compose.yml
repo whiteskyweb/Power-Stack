@@ -2,44 +2,73 @@ version: '3.3'
 
 services:
 
-  web:
+  frontend-web:
     build:
       context: ../../
-      dockerfile: ./infrastructure/docker/web/Dockerfile
-    environment:
-      ENV: LOCAL
-      HOST: localhost
-    volumes:
-      - web_code:/var/www/:ro
-      - web_files:/var/www/web/sites/default/files/:ro
+      dockerfile: ./infrastructure/docker/frontend-web/Dockerfile
+      args:
+        - NGINX_VER=$NGINX_VER
+        - HOST=$HOST
+        - ENV=$ENV
+        - API_HOST=$API_HOST
+    env_file:
+        - ../../.env
     ports:
       - "80:80"
       - "443:443"
     restart: always
     depends_on:
-      - php
+      - backend-web
 
-  php:
+  backend-web:
     build:
       context: ../../
-      dockerfile: ./infrastructure/docker/php-fpm/Dockerfile
+      dockerfile: ./infrastructure/docker/backend-web/Dockerfile
+      args:
+        - NGINX_VER=$NGINX_VER
+        - API_HOST=$API_HOST
+    env_file:
+      - ../../.env
+    volumes:
+      - web_code:/var/www/:ro
+      - web_files:/var/www/web/sites/default/files/:ro
+    ports:
+      - "8080:80"
+      - "8081:443"
+    restart: always
+    depends_on:
+      - backend-php
+    extra_hosts:
+      - "${API_HOST}:127.0.0.1"
+
+  backend-php:
+    build:
+      context: ../../
+      dockerfile: ./infrastructure/docker/backend-php/Dockerfile
+      args:
+        - PHP_VER=$PHP_VER
+    env_file:
+      - ../../.env
     volumes:
       - web_code:/var/www/
       - web_files:/var/www/web/sites/default/files/
     restart: always
 
-  db:
-    image: postgres:10
-    environment:
-      POSTGRES_PASSWORD: your_postgres_password
+  backend-db:
+    image: postgres:${POSTGRES_VER}
+    env_file:
+      - ../../.env
     volumes:
       - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
     restart: always
 
-  caching:
+  backend-caching:
     image: redis:latest
 
 volumes:
   web_code:
+  web_config:
   web_files:
   db_data:

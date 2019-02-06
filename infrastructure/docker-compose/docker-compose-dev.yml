@@ -12,10 +12,10 @@ services:
       - "443:443"
     restart: always
     volumes:
-      - ../nginx/site.conf.template:/etc/nginx/conf.d/site.conf.template
+      - ../nginx/backend-site.conf.template:/etc/nginx/conf.d/backend-site.conf.template
       - ../nginx/entrypoint.sh:/scripts/nginx/entrypoint.sh
       - ../../backend-code:/var/www/
-    command: /bin/bash -c "envsubst '$${HOST}, $${ENV}' < /etc/nginx/conf.d/site.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;' && chown -R www-data:www-data /var/www"
+    command: /bin/bash -c "envsubst '$${HOST}, $${ENV}' < /etc/nginx/conf.d/backend-site.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;' && chown -R www-data:www-data /var/www"
 
   php:
     build:

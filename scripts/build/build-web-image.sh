@@ -20,12 +20,10 @@ if hash docker 2>/dev/null; then
   cd ../../
 
 
-  printf "${GREEN_BG}Building image${NC}\n"
+  printf "${GREEN_BG}Building web image${NC}\n"
 
     set -x
-
-    docker build -t registry.gitlab.com/travel-nation/power-stack/web:v0.0.2  -f ./configs/docker/web/Dockerfile .
-
+      docker build -t registry.gitlab.com/travel-nation/power-stack/web:v0.0.3  -f ./infrastructure/docker/backend-web/Dockerfile .
     set +x
 
   printf "${GREEN}done${NC}\n"
@@ -33,7 +31,22 @@ if hash docker 2>/dev/null; then
   printf "${GREEN_BG}Pushing image to registry${NC}\n"
 
     set -x
-      docker push registry.gitlab.com/travel-nation/power-stack/web:v0.0.2
+      docker push registry.gitlab.com/travel-nation/power-stack/web:v0.0.3
+    set +x
+  printf "${GREEN}done${NC}\n"
+
+  printf "${GREEN_BG}Building PHP image${NC}\n"
+
+    set -x
+      docker build -t registry.gitlab.com/travel-nation/power-stack/php:v0.0.3  -f ./infrastructure/docker/backend-php/Dockerfile .
+    set +x
+
+  printf "${GREEN}done${NC}\n"
+
+  printf "${GREEN_BG}Pushing image to registry${NC}\n"
+
+    set -x
+      docker push registry.gitlab.com/travel-nation/power-stack/php:v0.0.3
     set +x
   printf "${GREEN}done${NC}\n"
 

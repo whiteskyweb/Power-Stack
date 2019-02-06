@@ -1,6 +1,7 @@
 # Power Stack 🔌🥞
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/067c31a35eec4e348dcef717a7aff582)](https://www.codacy.com/app/xaviemirmon/Power-Stack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=xaviemirmon/Power-Stack&amp;utm_campaign=Badge_Grade)
+[![pipeline status](https://gitlab.com/travel-nation/power-stack/badges/master/pipeline.svg)](https://gitlab.com/travel-nation/power-stack/commits/master)
 
 The Power Stack is a collection of all the best technologies providing you 
 with boilerplate to get a modern API-based containerised web app up and 
