@@ -17,12 +17,11 @@ COPY ./frontend-code/ /var/www/
 WORKDIR /var/www/
 
 RUN npm install && \
-    npm install --global gatsby-cli && \
-    gatsby build
+    npm install --global gatsby-cli
 
 # Copy across any custom php.ini files
 COPY ./infrastructure/configuration/nginx/ /etc/nginx/conf.d/
 
 RUN envsubst '$${HOST}, $${API_HOST}, $${ENV}' < /etc/nginx/conf.d/frontend-site.conf.template > /etc/nginx/conf.d/default.conf
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD sh -c "gatsby build && nginx -g 'daemon off;'"

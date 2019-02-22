@@ -34,6 +34,9 @@ RUN docker-php-ext-install gd \
 # Add composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
+# Set vendor directory to path
+ENV PATH=$PATH":/var/www/vendor/bin"
+
 # Copy across any custom php.ini files
 COPY ./infrastructure/configuration/php-fpm/ /usr/local/etc/php/conf.d/
 
@@ -46,6 +49,4 @@ RUN chown -R www-data:www-data /var/www
 
 USER www-data
 
-RUN composer install -vvv
-
-WORKDIR /var/www/web
+ENTRYPOINT sh -c "composer -n install -vvv && php-fpm"
