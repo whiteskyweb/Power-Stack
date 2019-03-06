@@ -1,6 +1,6 @@
 #! /bin/bash
 
-. ./setup.sh
+. ./scripts/build/setup.sh
 
 build_image () {
   printf "${GREEN_BG}Building ${2} image${NC}\n"

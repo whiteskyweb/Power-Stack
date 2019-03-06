@@ -1,8 +1,6 @@
 #! /bin/bash
 
-cat << "EOF"
-
-EOF
+. ./scripts/release/setup.sh
 
 release_images () {
   printf "${GREEN_BG}Pushing image to registry${NC}\n"
