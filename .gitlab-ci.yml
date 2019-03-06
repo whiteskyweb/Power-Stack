@@ -3,16 +3,25 @@ stages:
   - test
   - deploy
 
-test:
-  stage: test
-  script: echo "Running tests"
-
 build:
   stage: build
   image: docker
   services:
     - docker:dind
-  script: sh ./scripts/build/build-web-image.sh
+    - docker-compose
+  script:
+    - echo $BUILD_VARS | base64 -d > ./.env
+    - sh ./scripts/build/build-web-image.sh
+
+
+test_backend:
+  stage: test
+  script: echo "Running tests"
+
+test_frontend:
+  stage: test
+  script: echo "Running tests"
+
 
 deploy_review:
   stage: deploy
@@ -29,20 +38,20 @@ deploy_review:
 deploy_staging:
   stage: deploy
   script:
-  - echo "Deploy to staging server"
+    - echo "Deploy to staging server"
   environment:
     name: staging
     url: https://staging.example.com
   only:
-  - master
+    - master
 
 deploy_prod:
   stage: deploy
   script:
-  - echo "Deploy to production server"
+    - echo "Deploy to production server"
   environment:
     name: production
     url: https://example.com
   when: manual
   only:
-  - master
+    - master
