@@ -9,22 +9,23 @@ stages:
 
 build:
   stage: build
-  image:
-    name: docker/compose:1.23.2
-    entrypoint: ["/bin/sh", "-c"]
+  image: docker
   before_script:
     - sh ./scripts/misc/setup.sh
   services:
-    - docker
     - docker:dind
   script:
     - sh ./scripts/build/build.sh
-    - docker-compose -f ./infrastructure/docker-compose/docker-compose.yml -f ./infrastructure/docker-compose/docker-compose-dev.yml up -d
-
 
 test_backend:
   stage: test
-  script: echo "Running tests"
+  image:
+    name: docker/compose:1.23.2
+    entrypoint: ["/bin/sh", "-c"]
+  script:
+    - echo "Running backend tests"
+    - docker-compose -f ./infrastructure/docker-compose/docker-compose.yml -f ./infrastructure/docker-compose/docker-compose-dev.yml up -d
+
 
 test_frontend:
   stage: test
