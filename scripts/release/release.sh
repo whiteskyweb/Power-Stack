@@ -1,5 +1,9 @@
 #! /bin/bash
 
+cat << "EOF"
+
+EOF
+
 release_images () {
   printf "${GREEN_BG}Pushing image to registry${NC}\n"
 

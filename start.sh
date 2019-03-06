@@ -1,6 +1,6 @@
 #! /bin/bash
 
-. ./scripts/misc/setup.sh
+. scripts/misc/globals.sh
 
 cat << "EOF"
 
