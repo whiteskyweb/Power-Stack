@@ -24,6 +24,7 @@ build_image () {
   printf "${GREEN_BG}Pushing image to registry${NC}\n"
 
     set -x
+      docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
       docker push $REGISTRY/$1/$2:v$3
     set +x
   printf "${GREEN}done${NC}\n"
