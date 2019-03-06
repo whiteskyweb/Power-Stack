@@ -9,6 +9,9 @@ test:
 
 build:
   stage: build
+  image: docker
+  services:
+    - docker:dind
   script: sh ./scripts/build/build-web-image.sh
 
 deploy_review:

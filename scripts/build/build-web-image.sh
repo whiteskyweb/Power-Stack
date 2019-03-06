@@ -38,4 +38,5 @@ if hash docker 2>/dev/null; then
 
 else
   echo >&2 "I require docker but it's not installed.  Aborting.";
+  exit 1;
 fi
