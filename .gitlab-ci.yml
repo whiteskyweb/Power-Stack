@@ -15,6 +15,7 @@ build:
   before_script:
     - sh ./scripts/misc/setup.sh
   services:
+    - docker
     - docker:dind
   script:
     - sh ./scripts/build/build.sh
