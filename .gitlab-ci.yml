@@ -10,8 +10,6 @@ stages:
 build:
   stage: build
   image: docker
-  before_script:
-    - sh ./scripts/misc/setup.sh
   services:
     - docker:dind
   script:
