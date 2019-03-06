@@ -10,6 +10,7 @@ RUN apk update && \
             libpng-dev \
             libpq \
             postgresql-dev \
+            postgresql-client \
             libpng-dev \
             libzip-dev \
             unzip \

@@ -29,9 +29,12 @@ const Layout = ({ children }) => (
         >
           {children}
           <footer>
-            © {new Date().getFullYear()}, Built with
+            © {new Date().getFullYear()}, {` `}
+            <a href="https://www.gatsbyjs.org">Power Stack</a>
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            Built with ♥ in Brighton
+
+
           </footer>
         </div>
       </>

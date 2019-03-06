@@ -1,0 +1,111 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: backend-web
+  name: backend-web
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: backend-web
+    spec:
+      containers:
+      - env:
+        - name: API_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: API_HOST
+              name: backend-web-env
+        - name: ENV
+          valueFrom:
+            configMapKeyRef:
+              key: ENV
+              name: backend-web-env
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              key: HOST
+              name: backend-web-env
+        - name: NGINX_VER
+          valueFrom:
+            configMapKeyRef:
+              key: NGINX_VER
+              name: backend-web-env
+        - name: PHP_VER
+          valueFrom:
+            configMapKeyRef:
+              key: PHP_VER
+              name: backend-web-env
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_DB
+              name: backend-web-env
+        - name: POSTGRES_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_HOSTNAME
+              name: backend-web-env
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PASSWORD
+              name: backend-web-env
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PORT
+              name: backend-web-env
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_USER
+              name: backend-web-env
+        - name: POSTGRES_VER
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_VER
+              name: backend-web-env
+        - name: REGISTRY
+          valueFrom:
+            configMapKeyRef:
+              key: REGISTRY
+              name: backend-web-env
+        - name: VERSION
+          valueFrom:
+            configMapKeyRef:
+              key: VERSION
+              name: backend-web-env
+        image: registry.gitlab.com/travel-nation/power-stack/backend/web:v0.0.3
+        name: backend-web
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/www/
+          name: web-code
+          readOnly: true
+        - mountPath: /var/www/web/sites/default/files/
+          name: web-files
+          readOnly: true
+      restartPolicy: Always
+      volumes:
+      - name: web-code
+        persistentVolumeClaim:
+          claimName: web-code
+          readOnly: true
+      - name: web-files
+        persistentVolumeClaim:
+          claimName: web-files
+          readOnly: true
+status: {}

@@ -16,11 +16,15 @@
         }
     ],
     "require": {
+        "hirak/prestissimo": "^0.3",
+        "behat/behat": "^3.5",
+        "wikimedia/composer-merge-plugin": "dev-master",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
+        "drupal/power_stack_distro": "^1.0",
         "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
@@ -44,6 +48,7 @@
         "files": ["load.environment.php"]
     },
     "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -51,13 +56,20 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
+        "merge-plugin": {
+            "require": [
+                "web/profiles/contrib/*/composer.json"
+            ],
+            "recurse": true
+        },
         "patchLevel": {
             "drupal/core": "-p2"
         },

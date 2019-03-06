@@ -7,44 +7,32 @@ services:
       context: ../../
       dockerfile: ./infrastructure/docker/frontend-web/Dockerfile
       args:
-        - NGINX_VER=$NGINX_VER
-        - HOST=$HOST
-        - ENV=$ENV
-        - API_HOST=$API_HOST
+      - NGINX_VER=$NGINX_VER
+      - HOST=$HOST
+      - ENV=$ENV
+      - API_HOST=$API_HOST
     entrypoint:
       - sh
       - -c
-      - "gatsby develop -p 5000 -H 0.0.0.0"
-    env_file:
-      - ../../.env
-    volumes:
-      - ../../frontend-code:/var/www/
+      - "npm install && gatsby develop -p 8080 -H 0.0.0.0"
     ports:
-      - "8000:5000"
-    restart: always
-    depends_on:
-     - backend-web
+      - "8080:8080"
+    volumes:
+      - ../../frontend-code:/var/www:delegated
+    links:
+      - "backend-web:${API_HOST}"
 
   backend-web:
     build:
       context: ../../
       dockerfile: ./infrastructure/docker/backend-web/Dockerfile
       args:
-        - NGINX_VER=$NGINX_VER
-        - API_HOST=$API_HOST
-    env_file:
-    - ../../.env
+      - NGINX_VER=$NGINX_VER
+      - API_HOST=$API_HOST
     volumes:
-    - ../../backend-code:/var/www/:ro
-    - ../../backend-code/web/sites/default/files:/var/www/web/sites/default/files/:ro
-    ports:
-    - "80:80"
-    - "443:443"
-    restart: always
-    depends_on:
-    - backend-php
-    extra_hosts:
-    - "${API_HOST}:127.0.0.1"
+      - ../../backend-code:/var/www:ro
+      - ../../backend-code/web/sites/default/files:/var/www/web/sites/default/files:ro
+
 
   backend-php:
     build:
@@ -52,29 +40,10 @@ services:
       dockerfile: ./infrastructure/docker/backend-php/Dockerfile
       args:
       - PHP_VER=$PHP_VER
-    env_file:
-    - ../../.env
     entrypoint:
-    - sh
-    - -c
-    - "composer -n update -vvv && php-fpm"
+      - sh
+      - -c
+      - "composer -n update -vvv && php-fpm && drush updb && drush cr"
     volumes:
-    - ../../backend-code:/var/www/:ro
-    - ../../backend-code/web/sites/default/files:/var/www/web/sites/default/files/
-    restart: always
-
-  backend-db:
-    image: postgres:${POSTGRES_VER}
-    env_file:
-    - ../../.env
-    volumes:
-    - db_data:/var/lib/postgresql/data
-    ports:
-    - "5432:5432"
-    restart: always
-
-  backend-caching:
-    image: redis:latest
-
-volumes:
-  db_data:
+      - ../../backend-code:/var/www:delegated
+      - ../../backend-code/web/sites/default/files:/var/www/web/sites/default/files:delegated

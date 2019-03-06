@@ -1,9 +1,6 @@
 #! /bin/bash
 
-NC='\033[0m' # No Color
-GREEN_BG='\033[42m'
-GREEN='\033[0;32m'
-
+. ./scripts/misc/setup.sh
 
 cat << "EOF"
     ____                             _____ __             __      ____        _ __    __
@@ -15,40 +12,29 @@ cat << "EOF"
 
 EOF
 
+build_image () {
+  printf "${GREEN_BG}Building ${2} image${NC}\n"
+
+    set -x
+      docker build -t $REGISTRY/$1/$2:v$3  -f ./infrastructure/docker/$1-$2/Dockerfile .
+    set +x
+
+  printf "${GREEN}done${NC}\n"
+
+  printf "${GREEN_BG}Pushing image to registry${NC}\n"
+
+    set -x
+      docker push $REGISTRY/$1/$2:v$3
+    set +x
+  printf "${GREEN}done${NC}\n"
+}
+
 
 if hash docker 2>/dev/null; then
-  cd ../../
 
-
-  printf "${GREEN_BG}Building web image${NC}\n"
-
-    set -x
-      docker build -t registry.gitlab.com/travel-nation/power-stack/web:v0.0.3  -f ./infrastructure/docker/backend-web/Dockerfile .
-    set +x
-
-  printf "${GREEN}done${NC}\n"
-
-  printf "${GREEN_BG}Pushing image to registry${NC}\n"
-
-    set -x
-      docker push registry.gitlab.com/travel-nation/power-stack/web:v0.0.3
-    set +x
-  printf "${GREEN}done${NC}\n"
-
-  printf "${GREEN_BG}Building PHP image${NC}\n"
-
-    set -x
-      docker build -t registry.gitlab.com/travel-nation/power-stack/php:v0.0.3  -f ./infrastructure/docker/backend-php/Dockerfile .
-    set +x
-
-  printf "${GREEN}done${NC}\n"
-
-  printf "${GREEN_BG}Pushing image to registry${NC}\n"
-
-    set -x
-      docker push registry.gitlab.com/travel-nation/power-stack/php:v0.0.3
-    set +x
-  printf "${GREEN}done${NC}\n"
+  build_image 'backend' 'php' $VERSION
+  build_image 'backend' 'web' $VERSION
+  build_image 'frontend' 'web' $VERSION
 
 else
   echo >&2 "I require docker but it's not installed.  Aborting.";
