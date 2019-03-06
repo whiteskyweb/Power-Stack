@@ -1,18 +1,25 @@
 stages:
   - build
   - test
+  - release
   - deploy
+  - performance
+
+
 
 build:
   stage: build
-  image: docker
+  image:
+    name: docker/compose:1.23.2
+    entrypoint: ["/bin/sh", "-c"]
+  before_script:
+    - sh ./scripts/misc/setup.sh
   services:
     - docker:dind
-    - docker/compose:1.23.2
   script:
-    - echo $BUILD_VARS | base64 -d > ./.env
-    - sh ./scripts/build/build-web-image.sh
+    - sh ./scripts/build/build.sh
     - docker-compose -f ./infrastructure/docker-compose/docker-compose.yml -f ./infrastructure/docker-compose/docker-compose-dev.yml up -d
+
 
 test_backend:
   stage: test
@@ -21,6 +28,12 @@ test_backend:
 test_frontend:
   stage: test
   script: echo "Running tests"
+
+
+release:
+  stage: release
+  script:
+    - ./scripts/release/release.sh
 
 
 deploy_review:
