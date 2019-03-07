@@ -16,11 +16,15 @@ build:
 
 test_backend:
   stage: test
-  image:
-    name: docker/compose:1.23.2
-    entrypoint: ["/bin/sh", "-c"]
+  image: tmaier/docker-compose:latest
+
+  services:
+    - docker:dind
+
+  before_script:
+    - docker info
+    - docker-compose --version
   script:
-    - export DOCKER_HOST="tcp://localhost:2375"
     - sh ./scripts/test/test.sh
     - echo "Running backend tests"
 
