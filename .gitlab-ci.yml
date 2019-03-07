@@ -5,11 +5,10 @@ stages:
   - deploy
   - performance
 
-
+image: docker
 
 build:
   stage: build
-  image: docker
   services:
     - docker:dind
   script:
