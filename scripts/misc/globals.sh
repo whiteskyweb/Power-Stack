@@ -1,6 +1,6 @@
 #! /bin/bash
 
-PS_VERSION = 0.0.3
+PS_VERSION=0.0.3
 
 NC='\033[0m' # No Color
 GREEN_BG='\033[42m'

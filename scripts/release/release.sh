@@ -7,7 +7,7 @@ release_images () {
 
     set -x
 
-      docker login -u gitlab-ci-token -p $CI_JOB_TOKEN
+       echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin
       docker push $REGISTRY/$1/$2:v$3
 
     set +x
