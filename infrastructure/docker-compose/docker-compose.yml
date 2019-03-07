@@ -3,7 +3,7 @@ version: '3.3'
 services:
 
   frontend-web:
-    image: registry.gitlab.com/travel-nation/power-stack/frontend/web:v0.0.3
+    image: registry.gitlab.com/travel-nation/power-stack/frontend/web:v${VERSION}
     entrypoint:
       - sh
       - -c
@@ -18,7 +18,7 @@ services:
       - backend-web
 
   backend-web:
-    image: registry.gitlab.com/travel-nation/power-stack/backend/web:v0.0.3
+    image: registry.gitlab.com/travel-nation/power-stack/backend/web:v${VERSION}
     env_file:
       - ../../.env
     volumes:
@@ -34,7 +34,7 @@ services:
       - "${API_HOST}:127.0.0.1"
 
   backend-php:
-    image: registry.gitlab.com/travel-nation/power-stack/backend/php:v0.0.3
+    image: registry.gitlab.com/travel-nation/power-stack/backend/php:v${VERSION}
     env_file:
       - ../../.env
     entrypoint:
