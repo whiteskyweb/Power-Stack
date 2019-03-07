@@ -5,7 +5,7 @@ stages:
   - deploy
   - performance
 
-image: docker
+image: tmaier/docker-compose:latest
 
 build:
   stage: build
@@ -16,14 +16,9 @@ build:
 
 test_backend:
   stage: test
-  image: tmaier/docker-compose:latest
-
+  
   services:
     - docker:dind
-
-  before_script:
-    - docker info
-    - docker-compose --version
   script:
     - sh ./scripts/test/test.sh
     - echo "Running backend tests"
