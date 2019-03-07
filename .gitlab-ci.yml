@@ -32,7 +32,7 @@ test_frontend:
 release:
   stage: release
   script:
-    - ./scripts/release/release.sh
+    - sh ./scripts/release/release.sh
 
 
 deploy_review:
