@@ -20,6 +20,7 @@ test_backend:
     name: docker/compose:1.23.2
     entrypoint: ["/bin/sh", "-c"]
   script:
+    - export DOCKER_HOST="tcp://localhost:2375"
     - sh ./scripts/test/test.sh
     - echo "Running backend tests"
 
