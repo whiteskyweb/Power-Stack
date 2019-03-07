@@ -1,6 +1,6 @@
 #! /bin/bash
 
-. ./scripts/test/setup.
+. ./scripts/test/setup.sh
 
 docker --version
 docker-compose --version
