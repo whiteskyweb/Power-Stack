@@ -2,6 +2,7 @@
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/067c31a35eec4e348dcef717a7aff582)](https://www.codacy.com/app/xaviemirmon/Power-Stack?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=xaviemirmon/Power-Stack&amp;utm_campaign=Badge_Grade)
 [![pipeline status](https://gitlab.com/travel-nation/power-stack/badges/master/pipeline.svg)](https://gitlab.com/travel-nation/power-stack/commits/master)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c81828e6-617d-4884-9c61-09049754f036/deploy-status)](https://app.netlify.com/sites/power-stack-prod/deploys)
 
 The Power Stack is a collection of all the best technologies providing you 
 with boilerplate to get a modern API-based containerised web app up and 

@@ -1,19 +1,21 @@
 #! /bin/bash
 
-PS_VERSION=0.0.3
+export PS_VERSION=0.0.3
 
-NC='\033[0m' # No Color
-GREEN_BG='\033[42m'
-GREEN='\033[0;32m'
+export NC='\033[0m' # No Color
+export GREEN_BG='\033[42m'
+export GREEN='\033[0;32m'
 
-if [ ! -z "$" ]
-then
-  echo $BUILD_VARS | base64 -d > ./.env
-fi
 
 if [ -f .env ]
 then
   export $(cat .env | sed 's/#.*//g' | xargs)
+fi
+
+
+if [ ! -z "$BUILD_VARS" ]
+then
+  echo $BUILD_VARS | base64 -d > ./.env
 fi
 
 
