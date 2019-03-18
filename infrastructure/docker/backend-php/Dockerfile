@@ -50,4 +50,6 @@ RUN chown -R www-data:www-data /var/www
 
 USER www-data
 
+WORKDIR /var/www
+
 ENTRYPOINT sh -c "composer -n install -vvv && php-fpm"

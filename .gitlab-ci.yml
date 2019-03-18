@@ -13,10 +13,14 @@ build:
     - docker:dind
   script:
     - sh ./scripts/build/build.sh
+  artifacts:
+    paths:
+    - /var/lib/docker/image/overlay2/imagedb/content
+    expire_in: 1 week
 
 test_backend:
   stage: test
-  
+
   services:
     - docker:dind
   script:
