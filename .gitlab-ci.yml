@@ -43,7 +43,7 @@ test_frontend:
 release:
   stage: release
   dependencies:
-    - test
+    - test_backend
   script:
     - sh ./scripts/release/release.sh
 
