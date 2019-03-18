@@ -6,11 +6,12 @@ stages:
   - performance
 
 image: tmaier/docker-compose:latest
+services:
+  - docker:dind
 
 build:
   stage: build
-  services:
-    - docker:dind
+
   script:
     - sh ./scripts/build/build.sh
   artifacts:
