@@ -14,13 +14,16 @@ build:
   script:
     - sh ./scripts/build/build.sh
   artifacts:
-    paths:
-    - /var/lib/docker/
+    untracked: true
     expire_in: 1 week
 
 test_backend:
   stage: test
-
+  dependencies:
+    - build
+  artifacts:
+    untracked: true
+    expire_in: 1 week
   services:
     - docker:dind
   script:
@@ -29,12 +32,18 @@ test_backend:
 
 test_frontend:
   stage: test
+  artifacts:
+    untracked: true
+    expire_in: 1 week
+  dependencies:
+    - build
   script:
     - echo "Running tests"
 
-
 release:
   stage: release
+  dependencies:
+    - test
   script:
     - sh ./scripts/release/release.sh
 
