@@ -15,7 +15,7 @@ build:
     - sh ./scripts/build/build.sh
   artifacts:
     paths:
-    - /var/lib/docker/image/overlay2/imagedb/content
+    - /var/lib/docker/
     expire_in: 1 week
 
 test_backend:
