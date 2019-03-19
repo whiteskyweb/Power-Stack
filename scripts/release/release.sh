@@ -8,9 +8,9 @@ release_images () {
 
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin
 
-    docker tag $REGISTRY/$1/$2:dev $REGISTRY/$1/$2:$3
+    docker tag "${REGISTRY}/${1}/${2}:dev" "${REGISTRY}/${1}/${2}:${3}"
 
-    docker push $REGISTRY/$1/$2:$3
+    docker push "${REGISTRY}/${1}/${2}:${3}"
 
   printf "${GREEN}done${NC}\n"
 }

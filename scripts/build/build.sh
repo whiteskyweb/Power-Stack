@@ -7,9 +7,9 @@ build_image () {
 
     echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin
 
-    docker build -t $CI_REGISTRY/$1/$2:dev  -f ./infrastructure/docker/$1-$2/Dockerfile .
+    docker build -t "${CI_REGISTRY}/${1}/${2}:dev"  -f "./infrastructure/docker/${1}-${2}/Dockerfile" .
 
-    docker push $REGISTRY/$1/$2:dev
+    docker push "${REGISTRY}/${1}/${2}:dev"
 
   printf "${GREEN}done${NC}\n"
 }

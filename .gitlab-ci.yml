@@ -11,43 +11,25 @@ services:
 
 build:
   stage: build
-
   script:
     - sh ./scripts/build/build.sh
-  artifacts:
-    untracked: true
-    expire_in: 1 week
 
 test_backend:
   stage: test
-  dependencies:
-    - build
-  artifacts:
-    untracked: true
-    expire_in: 1 week
-  services:
-    - docker:dind
+
   script:
     - sh ./scripts/test/test.sh
     - echo "Running backend tests"
 
 test_frontend:
   stage: test
-  artifacts:
-    untracked: true
-    expire_in: 1 week
-  dependencies:
-    - build
   script:
     - echo "Running tests"
 
 release:
   stage: release
-  dependencies:
-    - test_backend
   script:
     - sh ./scripts/release/release.sh
-
 
 deploy_review:
   stage: deploy
