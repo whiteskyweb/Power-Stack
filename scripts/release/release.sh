@@ -5,12 +5,12 @@
 release_images () {
   printf "${GREEN_BG}Pushing image to registry${NC}\n"
 
-    set -x
 
-       echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin
-      docker push $REGISTRY/$1/$2:v$3
+    echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin
 
-    set +x
+    docker tag $REGISTRY/$1/$2:dev $REGISTRY/$1/$2:$3
+
+    docker push $REGISTRY/$1/$2:$3
 
   printf "${GREEN}done${NC}\n"
 }

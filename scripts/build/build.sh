@@ -5,11 +5,11 @@
 build_image () {
   printf "${GREEN_BG}Building ${2} image${NC}\n"
 
-    set -x
+    echo "$CI_JOB_TOKEN" | docker login -u gitlab-ci-token --password-stdin
 
-      docker build -t $CI_REGISTRY/$1/$2:v$3  -f ./infrastructure/docker/$1-$2/Dockerfile .
+    docker build -t $CI_REGISTRY/$1/$2:dev  -f ./infrastructure/docker/$1-$2/Dockerfile .
 
-    set +x
+    docker push $REGISTRY/$1/$2:dev
 
   printf "${GREEN}done${NC}\n"
 }
@@ -17,9 +17,9 @@ build_image () {
 
 if hash docker 2>/dev/null; then
 
-  build_image 'backend' 'php' $VERSION
-  build_image 'backend' 'web' $VERSION
-  build_image 'frontend' 'web' $VERSION
+  build_image 'backend' 'php'
+  build_image 'backend' 'web'
+  build_image 'frontend' 'web'
 
 else
   echo >&2 "I require docker but it's not installed.  Aborting.";
