@@ -4,11 +4,13 @@
 
 build_image () {
 
+  echo $CI_REPOSITORY_URL
+
   printf "${GREEN_BG}Building ${2} image${NC}\n"
 
-    docker build -t "${CI_REGISTRY}/${1}/${2}:dev"  -f "./infrastructure/docker/${1}-${2}/Dockerfile" .
+    docker build -t $CI_REGISTRY/travel-nation/power-stack/$1/$2:dev  -f ./infrastructure/docker/$1-$2/Dockerfile .
     docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
-    docker push "${CI_REGISTRY}/${1}/${2}:dev"
+    docker push $CI_REGISTRY/travel-nation/power-stack/$1/$2:dev
 
   printf "${GREEN}done${NC}\n"
 
