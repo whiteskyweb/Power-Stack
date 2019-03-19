@@ -5,7 +5,7 @@ stages:
   - deploy
   - performance
 
-
+image: docker
 
 build:
   before_script:
