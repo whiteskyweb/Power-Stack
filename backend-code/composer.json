@@ -16,7 +16,6 @@
         }
     ],
     "require": {
-        "hirak/prestissimo": "^0.3",
         "behat/behat": "^3.5",
         "wikimedia/composer-merge-plugin": "dev-master",
         "composer/installers": "^1.2",
@@ -60,7 +59,8 @@
             "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalComposer\\DrupalScaffold\\Plugin::scaffold"
         ]
     },
     "extra": {
@@ -82,10 +82,17 @@
             "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "drupal-scaffold": {
+            "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}",
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
-            }
+            },
+            "excludes": [
+                ".htaccess",
+                ".ht.router.php",
+                "sites/default/default.settings.php",
+                "sites/default/default.services.yml"
+            ]
         }
     }
 }
