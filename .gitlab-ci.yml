@@ -8,6 +8,8 @@ stages:
 image: docker
 
 build:
+  services:
+    - docker:dind
   stage: build
   script:
     - sh ./scripts/build/build.sh
