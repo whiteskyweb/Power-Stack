@@ -6,6 +6,8 @@ build_image () {
 
   printf "${GREEN_BG}Building ${2} image${NC}\n"
 
+    docker login -u $CI_DEPLOY_USER -p $CI_DEPLOY_PASSWORD $CI_REGISTRY
+    echo $CI_DEPLOY_USER $CI_DEPLOY_PASSWORD $CI_REGISTRY
     docker build -t "${CI_REGISTRY}/${1}/${2}:dev"  -f "./infrastructure/docker/${1}-${2}/Dockerfile" .
     docker push "${CI_REGISTRY}/${1}/${2}:dev"
 
