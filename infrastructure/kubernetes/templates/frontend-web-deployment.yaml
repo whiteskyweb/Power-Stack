@@ -1,0 +1,93 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f ../docker-compose/docker-compose.yml -c
+    kompose.version: 1.17.0 (a74acad)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: frontend-web
+  name: frontend-web
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: frontend-web
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c
+        - gatsby build && nginx -g 'daemon off;'
+        env:
+        - name: API_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: API_HOST
+              name: frontend-web-env
+        - name: ENV
+          valueFrom:
+            configMapKeyRef:
+              key: ENV
+              name: frontend-web-env
+        - name: HOST
+          valueFrom:
+            configMapKeyRef:
+              key: HOST
+              name: frontend-web-env
+        - name: NGINX_VER
+          valueFrom:
+            configMapKeyRef:
+              key: NGINX_VER
+              name: frontend-web-env
+        - name: PHP_VER
+          valueFrom:
+            configMapKeyRef:
+              key: PHP_VER
+              name: frontend-web-env
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_DB
+              name: frontend-web-env
+        - name: POSTGRES_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_HOSTNAME
+              name: frontend-web-env
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PASSWORD
+              name: frontend-web-env
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_PORT
+              name: frontend-web-env
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_USER
+              name: frontend-web-env
+        - name: POSTGRES_VER
+          valueFrom:
+            configMapKeyRef:
+              key: POSTGRES_VER
+              name: frontend-web-env
+        - name: VERSION
+          valueFrom:
+            configMapKeyRef:
+              key: VERSION
+              name: frontend-web-env
+        image: registry.gitlab.com/travel-nation/power-stack/frontend/web:latest
+        name: frontend-web
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources: {}
+      restartPolicy: Always
+status: {}

@@ -22,8 +22,8 @@ services:
     env_file:
       - ../../.env
     volumes:
-      - web_code:/var/www/:ro
-      - web_files:/var/www/web/sites/default/files/:ro
+      - web-code:/var/www/:ro
+      - web-files:/var/www/web/sites/default/files/:ro
     ports:
       - "80:80"
       - "443:443"
@@ -44,8 +44,8 @@ services:
     ports:
       - "9000"
     volumes:
-      - web_code:/var/www/
-      - web_files:/var/www/web/sites/default/files/
+      - web-code:/var/www/
+      - web-files:/var/www/web/sites/default/files/
     restart: always
 
   backend-db:
@@ -53,7 +53,7 @@ services:
     env_file:
       - ../../.env
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     restart: always
@@ -62,7 +62,7 @@ services:
     image: redis:latest
 
 volumes:
-  web_code:
-  web_config:
-  web_files:
-  db_data:
+  web-code:
+  web-config:
+  web-files:
+  db-data:
