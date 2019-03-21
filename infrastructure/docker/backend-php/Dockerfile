@@ -38,17 +38,13 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 # Set vendor directory to path
 ENV PATH=$PATH":/var/www/vendor/bin"
 
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
 # Copy across any custom php.ini files
 COPY ./infrastructure/configuration/php-fpm/ /usr/local/etc/php/conf.d/
 
 # Copy across any codebase
 COPY ./backend-code/ /var/www/
-
-WORKDIR /var/www
-
-RUN chown -R www-data:www-data /var/www
-
-USER www-data
 
 WORKDIR /var/www
 
