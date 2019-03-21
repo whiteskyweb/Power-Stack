@@ -52,4 +52,6 @@ USER www-data
 
 WORKDIR /var/www
 
-ENTRYPOINT sh -c "composer -n install -vvv && php-fpm"
+RUN composer -n install -vvv
+
+ENTRYPOINT sh -c "php-fpm"
