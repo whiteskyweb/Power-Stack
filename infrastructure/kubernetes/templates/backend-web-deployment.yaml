@@ -87,15 +87,10 @@ spec:
         - containerPort: 443
         resources: {}
         volumeMounts:
-        - mountPath: /var/www/
-          name: web-code
         - mountPath: /var/www/web/sites/default/files/
           name: web-files
       restartPolicy: Always
       volumes:
-      - name: web-code
-        persistentVolumeClaim:
-          claimName: web-code
       - name: web-files
         persistentVolumeClaim:
           claimName: web-files

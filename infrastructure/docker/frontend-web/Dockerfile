@@ -2,7 +2,7 @@ ARG NGINX_VER=1.15
 FROM nginx:${NGINX_VER}-alpine
 
 ARG HOST=localhost
-ARG API_HOST=api.localhost
+ARG API_HOST=localhost
 ARG ENV=local
 
 # install the packages we need

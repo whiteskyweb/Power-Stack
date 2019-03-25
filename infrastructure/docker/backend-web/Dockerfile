@@ -4,7 +4,7 @@ FROM registry.gitlab.com/travel-nation/power-stack/backend/php:dev AS php
 
 FROM nginx:${NGINX_VER}-alpine
 
-ARG API_HOST=api.localhost
+ARG API_HOST=localhost
 ARG ENV=local
 
 COPY --from=php /var/www /var/www

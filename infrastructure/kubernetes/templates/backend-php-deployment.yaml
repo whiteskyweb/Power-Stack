@@ -19,11 +19,7 @@ spec:
         io.kompose.service: backend-php
     spec:
       containers:
-      - command:
-        - sh
-        - -c
-        - composer -n install -vvv && php-fpm
-        env:
+      - env:
         - name: API_HOST
           valueFrom:
             configMapKeyRef:
