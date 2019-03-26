@@ -15,10 +15,8 @@ RUN apk add --no-cache gettext
 # Copy across any custom php.ini files
 COPY ./infrastructure/configuration/nginx/ /etc/nginx/conf.d/
 
-RUN envsubst '$${HOST},$${API_HOST}, $${ENV}' < /etc/nginx/conf.d/backend-site.conf.template > /etc/nginx/conf.d/default.conf
-
 WORKDIR /var/www/web
 
 EXPOSE 80 443
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["envsubst ", "'$${HOST},$${API_HOST}, $${ENV}' < /etc/nginx/conf.d/backend-site.conf.template > /etc/nginx/conf.d/default.conf", "nginx", "-g", "daemon off;"]

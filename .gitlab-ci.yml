@@ -1,8 +1,8 @@
 stages:
   - build
-  - test
+#  - test
   - release
-  - deploy
+#  - deploy
   - performance
 
 image: tmaier/docker-compose:latest
