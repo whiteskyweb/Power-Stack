@@ -1,8 +1,8 @@
 stages:
   - build
-#  - test
+  - test
   - release
-#  - deploy
+  - deploy
   - performance
 
 image: tmaier/docker-compose:latest
@@ -18,7 +18,7 @@ test_backend:
   stage: test
 
   script:
-    - sh ./scripts/test/test.sh
+#    - sh ./scripts/test/test.sh
     - echo "Running backend tests"
 
 test_frontend:
