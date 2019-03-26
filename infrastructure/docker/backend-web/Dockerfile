@@ -17,6 +17,8 @@ COPY ./infrastructure/configuration/nginx/ /etc/nginx/conf.d/
 
 RUN envsubst '$${HOST},$${API_HOST}, $${ENV}' < /etc/nginx/conf.d/backend-site.conf.template > /etc/nginx/conf.d/default.conf
 
-CMD ["nginx", "-g", "daemon off;"]
-
 WORKDIR /var/www/web
+
+EXPOSE 80 443
+
+CMD ["nginx", "-g", "daemon off;"]

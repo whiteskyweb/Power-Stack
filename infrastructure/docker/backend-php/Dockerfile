@@ -50,4 +50,6 @@ WORKDIR /var/www
 
 RUN composer -n install -vvv
 
+EXPOSE 9000
+
 ENTRYPOINT sh -c "php-fpm"

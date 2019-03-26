@@ -16,5 +16,6 @@ spec:
     io.kompose.service: backend-web
     app: backend-web
   type: LoadBalancer
+  externalTrafficPolicy: Cluster
 status:
   loadBalancer: {}
