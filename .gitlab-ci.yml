@@ -5,10 +5,6 @@ stages:
   - deploy
   - performance
 
-image: tmaier/docker-compose:latest
-services:
-  - docker:dind
-
 build:
   stage: build
   script:
@@ -17,8 +13,14 @@ build:
 test_backend:
   stage: test
 
+  before_script:
+    - helm init --client-only
+    - helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    - helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    - helm repo update
+
   script:
-#    - sh ./scripts/test/test.sh
+    - sh ./scripts/test/test.sh
     - echo "Running backend tests"
 
 test_frontend:
