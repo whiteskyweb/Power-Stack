@@ -1,5 +1,5 @@
-image: alpine:stable
 
+image: alpine:latest
 
 variables:
   KUBERNETES_VERSION: 1.11.9
