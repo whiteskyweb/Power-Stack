@@ -37,6 +37,9 @@ test_backend:
     - deploy
     - sh ./scripts/test/test.sh
     - echo "Running backend tests"
+  environment:
+    name: review/$CI_COMMIT_REF_NAME
+    url: https://$CI_ENVIRONMENT_SLUG-api.powerstack.dev
 
 test_frontend:
   stage: test
