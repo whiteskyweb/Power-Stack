@@ -4,12 +4,10 @@
 
 build_image () {
 
-  echo $CI_PROJECT_ID	$CI_PROJECT_NAME	$CI_PROJECT_NAMESPACE	$CI_PROJECT_PATH	$CI_PROJECT_PATH_SLUG
-
   printf "${GREEN_BG}Building ${2} image${NC}\n"
 
     docker build -t $CI_REGISTRY/$CI_PROJECT_PATH/$1/$2:dev  -f ./infrastructure/docker/$1-$2/Dockerfile .
-    docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    docker login ds-u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
     docker push $CI_REGISTRY/$CI_PROJECT_PATH/$1/$2:dev
 
   printf "${GREEN}done${NC}\n"

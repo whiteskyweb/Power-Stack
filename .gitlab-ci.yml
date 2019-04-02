@@ -38,19 +38,24 @@ deploy_review:
     - echo "Deploy a review app"
   environment:
     name: review/$CI_COMMIT_REF_NAME
-    url: https://$CI_ENVIRONMENT_SLUG.example.com
+    url: https://$CI_ENVIRONMENT_SLUG-api.powerstack.dev
   only:
   - branches
   except:
   - master
 
 deploy_staging:
+  before_script:
+    - helm init --client-only
+    - helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+    - helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    - helm repo update
   stage: deploy
   script:
-    - echo "Deploy to staging server"
+    - sh ./scripts/deploy/deploy.sh
   environment:
     name: staging
-    url: https://staging.example.com
+    url: https://staging-api.powerstack.dev
   only:
     - master
 
@@ -60,7 +65,7 @@ deploy_prod:
     - echo "Deploy to production server"
   environment:
     name: production
-    url: https://example.com
+    url: https://api.powerstack.dev
   when: manual
   only:
     - master

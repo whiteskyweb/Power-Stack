@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
-    io.kompose.service: backend-db
+    app: backend-db
   name: backend-db
 spec:
   ports:
@@ -14,7 +14,6 @@ spec:
     port: 5432
     targetPort: 5432
   selector:
-    io.kompose.service: backend-db
     app: backend-db
 status:
   loadBalancer: {}

@@ -16,5 +16,5 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: backend-php-env
+    app: backend-php-env
   name: backend-php-env

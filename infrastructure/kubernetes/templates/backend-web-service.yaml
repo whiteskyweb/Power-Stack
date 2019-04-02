@@ -13,8 +13,8 @@ spec:
     port: 443
     targetPort: 443
   selector:
-    io.kompose.service: backend-web
     app: backend-web
   type: LoadBalancer
+  externalTrafficPolicy: Local
 status:
   loadBalancer: {}

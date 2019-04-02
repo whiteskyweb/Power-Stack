@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
-    io.kompose.service: backend-php
+    app: backend-php
   name: backend-php
 spec:
   ports:
@@ -14,7 +14,6 @@ spec:
     port: 9000
     targetPort: 9000
   selector:
-    io.kompose.service: backend-php
     app: backend-php
 status:
   loadBalancer: {}

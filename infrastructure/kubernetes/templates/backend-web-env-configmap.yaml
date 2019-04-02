@@ -16,5 +16,5 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: backend-web-env
+    app: backend-web-env
   name: backend-web-env

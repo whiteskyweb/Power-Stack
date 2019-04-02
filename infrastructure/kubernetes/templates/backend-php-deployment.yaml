@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
-    io.kompose.service: backend-php
+    app: backend-php
   name: backend-php
 spec:
   replicas: 1
@@ -16,7 +16,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: backend-php
+        app: backend-php
     spec:
       containers:
       - env:
