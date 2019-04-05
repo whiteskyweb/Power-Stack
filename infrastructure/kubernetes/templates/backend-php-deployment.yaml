@@ -81,6 +81,7 @@ spec:
               key: VERSION
               name: backend-php-env
         image: registry.gitlab.com/travel-nation/power-stack/backend/php:dev
+        imagePullPolicy: Always
         name: backend-php
         nodeSelector:
           cloud.google.com/gke-nodepool: pool-1

@@ -77,6 +77,7 @@ spec:
               key: VERSION
               name: backend-web-env
         image: registry.gitlab.com/travel-nation/power-stack/backend/web:dev
+        imagePullPolicy: Always
         name: backend-web
         nodeSelector:
           cloud.google.com/gke-nodepool: pool-1
