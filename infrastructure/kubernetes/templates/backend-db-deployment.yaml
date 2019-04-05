@@ -82,12 +82,15 @@ spec:
               name: backend-db-env
         image: 'postgres:10'
         name: backend-db
+        nodeSelector:
+          cloud.google.com/gke-nodepool: pool-1
         ports:
         - containerPort: 5432
         resources: {}
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: db-data
+          subPath: postgres
       restartPolicy: Always
       volumes:
       - name: db-data

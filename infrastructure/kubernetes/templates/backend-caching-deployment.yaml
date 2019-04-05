@@ -19,6 +19,8 @@ spec:
     spec:
       containers:
       - image: redis:latest
+        nodeSelector:
+          cloud.google.com/gke-nodepool: pool-1
         name: backend-caching
         resources: {}
       restartPolicy: Always

@@ -80,8 +80,10 @@ spec:
             configMapKeyRef:
               key: VERSION
               name: backend-php-env
-        image: registry.gitlab.com/travel-nation/power-stack/backend/php:latest
+        image: registry.gitlab.com/travel-nation/power-stack/backend/php:dev
         name: backend-php
+        nodeSelector:
+          cloud.google.com/gke-nodepool: pool-1
         ports:
         - containerPort: 9000
         resources: {}

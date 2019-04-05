@@ -1,4 +1,21 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: web-files
+  name: web-files
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: nfs-server.default.svc.cluster.local
+    path: "/"
+
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
@@ -8,6 +25,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteMany
+  storageClassName: ""
   resources:
     requests:
       storage: 10Gi
