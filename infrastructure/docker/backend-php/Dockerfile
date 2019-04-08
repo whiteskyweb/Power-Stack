@@ -48,7 +48,7 @@ COPY ./backend-code/ /var/www/
 
 WORKDIR /var/www
 
-RUN composer -n install -vvv
+RUN php -d memory_limit=-1 /usr/bin/composer.phar -n install -vvv
 
 EXPOSE 9000
 
