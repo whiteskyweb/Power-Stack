@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
-    app: backend-php
-  name: backend-php
+    app: backend-php-{{ .Release.Name }}
+  name: backend-php-{{ .Release.Name }}
 spec:
   ports:
   - name: "9000"
     port: 9000
     targetPort: 9000
   selector:
-    app: backend-php
+    app: backend-php-{{ .Release.Name }}
 status:
   loadBalancer: {}

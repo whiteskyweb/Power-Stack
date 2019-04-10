@@ -16,5 +16,5 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: backend-db-env
-  name: backend-db-env
+    io.kompose.service: backend-db-env-{{ .Release.Name }}
+  name: backend-db-env-{{ .Release.Name }}

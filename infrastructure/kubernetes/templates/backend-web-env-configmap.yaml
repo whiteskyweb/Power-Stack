@@ -3,10 +3,11 @@ data:
   API_HOST: localhost
   ENV: local
   HOST: localhost
+  PHP_HOST: backend-php-{{ .Release.Name }}
   NGINX_VER: "1.15"
   PHP_VER: "7.2"
   POSTGRES_DB: backend
-  POSTGRES_HOSTNAME: backend-db
+  POSTGRES_HOSTNAME: backend-db-{{ .Release.Name }}
   POSTGRES_PASSWORD: maryhadalittlelamb
   POSTGRES_PORT: "5432"
   POSTGRES_USER: drupal-site
@@ -17,4 +18,4 @@ metadata:
   creationTimestamp: null
   labels:
     app: backend-web-env
-  name: backend-web-env
+  name: backend-web-env-{{ .Release.Name }}

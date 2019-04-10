@@ -6,8 +6,8 @@ metadata:
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
-    app: backend-db
-  name: backend-db
+    app: backend-db-{{ .Release.Name }}
+  name: backend-db-{{ .Release.Name }}
 spec:
   replicas: 1
   strategy:
@@ -16,7 +16,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: backend-db
+        app: backend-db-{{ .Release.Name }}
     spec:
       containers:
       - env:
@@ -24,64 +24,64 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: API_HOST
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: ENV
           valueFrom:
             configMapKeyRef:
               key: ENV
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: HOST
           valueFrom:
             configMapKeyRef:
               key: HOST
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: NGINX_VER
           valueFrom:
             configMapKeyRef:
               key: NGINX_VER
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: PHP_VER
           valueFrom:
             configMapKeyRef:
               key: PHP_VER
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_DB
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: POSTGRES_HOSTNAME
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_HOSTNAME
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: POSTGRES_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_PASSWORD
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: POSTGRES_PORT
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_PORT
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: POSTGRES_USER
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_USER
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: POSTGRES_VER
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_VER
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         - name: VERSION
           valueFrom:
             configMapKeyRef:
               key: VERSION
-              name: backend-db-env
+              name: backend-db-env-{{ .Release.Name }}
         image: 'postgres:10'
-        name: backend-db
+        name: backend-db-{{ .Release.Name }}
         nodeSelector:
           cloud.google.com/gke-nodepool: pool-1
         ports:
@@ -89,11 +89,11 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
-          name: db-data
+          name: db-data-{{ .Release.Name }}
           subPath: postgres
       restartPolicy: Always
       volumes:
-      - name: db-data
+      - name: db-data-{{ .Release.Name }}
         persistentVolumeClaim:
-          claimName: db-data
+          claimName: db-data-{{ .Release.Name }}
 status: {}

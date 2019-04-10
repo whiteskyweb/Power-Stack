@@ -2,8 +2,8 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   labels:
-    app: backend-web
-  name: backend-web
+    app: backend-web-{{ .Release.Name }}
+  name: backend-web-{{ .Release.Name }}
 spec:
   replicas: 1
   strategy:
@@ -12,7 +12,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: backend-web
+        app: backend-web-{{ .Release.Name }}
     spec:
       containers:
       - env:
@@ -20,67 +20,74 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: API_HOST
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: ENV
           valueFrom:
             configMapKeyRef:
               key: ENV
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: HOST
           valueFrom:
             configMapKeyRef:
               key: HOST
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: NGINX_VER
           valueFrom:
             configMapKeyRef:
               key: NGINX_VER
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
+        - name: PHP_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: PHP_HOST
+              name: backend-web-env-{{ .Release.Name }}
         - name: PHP_VER
           valueFrom:
             configMapKeyRef:
               key: PHP_VER
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_DB
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: POSTGRES_HOSTNAME
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_HOSTNAME
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: POSTGRES_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_PASSWORD
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: POSTGRES_PORT
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_PORT
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: POSTGRES_USER
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_USER
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: POSTGRES_VER
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_VER
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         - name: VERSION
           valueFrom:
             configMapKeyRef:
               key: VERSION
-              name: backend-web-env
+              name: backend-web-env-{{ .Release.Name }}
         image: registry.gitlab.com/travel-nation/power-stack/backend/web:dev
         imagePullPolicy: Always
-        name: backend-web
+        name: backend-web-{{ .Release.Name }}
+        {{ if .Values.GKE }}
         nodeSelector:
           cloud.google.com/gke-nodepool: pool-1
+        {{ end }}
         command: ["/bin/sh"]
         args: ["-c","envsubst '${HOST},${API_HOST},${ENV}' < /etc/nginx/conf.d/backend-site.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
         ports:
@@ -89,10 +96,10 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /var/www/web/sites/default/files/
-          name: web-files-2
+          name: web-files-2-{{ .Release.Name }}
       restartPolicy: Always
       volumes:
-      - name: web-files-2
+      - name: web-files-2-{{ .Release.Name }}
         persistentVolumeClaim:
-          claimName: web-files
+          claimName: web-files-{{ .Release.Name }}
 status: {}

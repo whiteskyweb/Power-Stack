@@ -2,8 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: backend-web
-  name: backend-web
+    io.kompose.service: backend-web-{{ .Release.Name }}
+  name: backend-web-{{ .Release.Name }}
 spec:
   ports:
   - name: "80"
@@ -13,7 +13,7 @@ spec:
     port: 443
     targetPort: 443
   selector:
-    app: backend-web
+    app: backend-web-{{ .Release.Name }}
   type: LoadBalancer
   externalTrafficPolicy: Local
 status:

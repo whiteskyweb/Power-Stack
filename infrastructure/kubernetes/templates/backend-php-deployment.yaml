@@ -6,8 +6,8 @@ metadata:
     kompose.version: 1.17.0 (a74acad)
   creationTimestamp: null
   labels:
-    app: backend-php
-  name: backend-php
+    app: backend-php-{{ .Release.Name }}
+  name: backend-php-{{ .Release.Name }}
 spec:
   replicas: 1
   strategy:
@@ -16,7 +16,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: backend-php
+        app: backend-php-{{ .Release.Name }}
     spec:
       containers:
       - env:
@@ -24,65 +24,67 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: API_HOST
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: ENV
           valueFrom:
             configMapKeyRef:
               key: ENV
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: HOST
           valueFrom:
             configMapKeyRef:
               key: HOST
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: NGINX_VER
           valueFrom:
             configMapKeyRef:
               key: NGINX_VER
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: PHP_VER
           valueFrom:
             configMapKeyRef:
               key: PHP_VER
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_DB
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: POSTGRES_HOSTNAME
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_HOSTNAME
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: POSTGRES_PASSWORD
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_PASSWORD
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: POSTGRES_PORT
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_PORT
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: POSTGRES_USER
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_USER
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: POSTGRES_VER
           valueFrom:
             configMapKeyRef:
               key: POSTGRES_VER
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         - name: VERSION
           valueFrom:
             configMapKeyRef:
               key: VERSION
-              name: backend-php-env
+              name: backend-php-env-{{ .Release.Name }}
         image: registry.gitlab.com/travel-nation/power-stack/backend/php:dev
+        command: ["/bin/sh"]
+        args: ["-c","chmod 777 /var/www/web/sites/default/files/ && php-fpm"]
         imagePullPolicy: Always
-        name: backend-php
+        name: backend-php-{{ .Release.Name }}
         nodeSelector:
           cloud.google.com/gke-nodepool: pool-1
         ports:
@@ -90,10 +92,10 @@ spec:
         resources: {}
         volumeMounts:
         - mountPath: /var/www/web/sites/default/files/
-          name: web-files
+          name: web-files-{{ .Release.Name }}
       restartPolicy: Always
       volumes:
-      - name: web-files
+      - name: web-files-{{ .Release.Name }}
         persistentVolumeClaim:
-          claimName: web-files
+          claimName: web-files-{{ .Release.Name }}
 status: {}

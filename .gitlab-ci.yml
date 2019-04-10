@@ -5,6 +5,7 @@ variables:
 
 stages:
   - build
+  - provision
   - test
   - release
   - deploy
@@ -17,6 +18,10 @@ build:
     DOCKER_DRIVER: overlay2
   services:
     - docker:dind
+  cache:
+    paths:
+      - /var/www/vendor/
+      - /root/.composer/
   stage: build
   script:
     - sh ./scripts/build/build.sh
@@ -29,7 +34,7 @@ test_backend:
     - sh ./scripts/test/test.sh
     - echo "Running backend tests"
   environment:
-    name: review/$CI_COMMIT_REF_NAME
+    name: test/$CI_COMMIT_REF_NAME
     url: https://$CI_ENVIRONMENT_SLUG-api.powerstack.dev
 
 test_frontend:

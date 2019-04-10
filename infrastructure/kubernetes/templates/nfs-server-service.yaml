@@ -1,7 +1,8 @@
+{{ if .Values.GKE }}
 apiVersion: v1
 kind: Service
 metadata:
-  name: nfs-server
+  name: nfs-server-{{ .Release.Name }}
 spec:
   # clusterIP: 10.3.240.20
   ports:
@@ -12,4 +13,5 @@ spec:
     - name: rpcbind
       port: 111
   selector:
-    role: nfs-server
+    role: nfs-server-{{ .Release.Name }}
+{{ end }}
