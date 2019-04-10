@@ -772,24 +772,16 @@ $settings['entity_update_batch_size'] = 50;
 
 $databases['default']['default'] = [
   'database' => getenv('POSTGRES_DB'),
-  'driver' => 'pgsql',
-  'host' => getenv('POSTGRES_HOSTNAME'),
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\pgsql',
-  'password' => getenv('POSTGRES_PASSWORD'),
-  'port' => getenv('POSTGRES_PORT'),
-  'prefix' => '',
   'username' => getenv('POSTGRES_USER'),
+  'password' => getenv('POSTGRES_PASSWORD'),
+  'prefix' => '',
+  'host' => getenv('POSTGRES_HOSTNAME'),
+  'port' => getenv('POSTGRES_PORT'),
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\pgsql',
+  'driver' => 'pgsql',
 ];
 
 $settings['reverse_proxy'] = TRUE;
-$settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);$databases['default']['default'] = array (
-  'database' => 'backend',
-  'username' => 'drupal-site',
-  'password' => 'maryhadalittlelamb',
-  'prefix' => '',
-  'host' => 'backend-db',
-  'port' => '5432',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\pgsql',
-  'driver' => 'pgsql',
-);
+$settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
+
 $config_directories['sync'] = 'sites/default/files/config_SxHj9zXVt2V-KUFkHti2PGgx5oJybSNRYJaC377V_ubmYV-ekz_yFKoIsFRd2s29XWErzuXJQg/sync';
