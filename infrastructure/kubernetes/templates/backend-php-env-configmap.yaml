@@ -6,7 +6,7 @@ data:
   NGINX_VER: "1.15"
   PHP_VER: "7.2"
   POSTGRES_DB: backend
-  POSTGRES_HOSTNAME: backend-db
+  POSTGRES_HOSTNAME: backend-db-{{ .Release.Name }}
   POSTGRES_PASSWORD: maryhadalittlelamb
   POSTGRES_PORT: "5432"
   POSTGRES_USER: drupal-site
@@ -16,5 +16,5 @@ kind: ConfigMap
 metadata:
   creationTimestamp: null
   labels:
-    app: backend-php-env
-  name: backend-php-env
+    app: backend-php-env-{{ .Release.Name }}
+  name: backend-php-env-{{ .Release.Name}}

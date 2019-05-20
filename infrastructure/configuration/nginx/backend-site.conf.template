@@ -90,7 +90,7 @@ server {
         fastcgi_param QUERY_STRING $query_string;
         fastcgi_intercept_errors on;
         # PHP 7 socket location.
-        fastcgi_pass backend-php:9000;
+        fastcgi_pass ${PHP_HOST}:9000;
     }
 
     # Fighting with Styles? This little gem is amazing.
