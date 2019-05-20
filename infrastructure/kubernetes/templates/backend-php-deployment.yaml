@@ -99,3 +99,18 @@ spec:
         persistentVolumeClaim:
           claimName: web-files-{{ .Release.Name }}
 status: {}
+{{ if .Values.GKE }}
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-php-{{ .Release.Name }}
+spec:
+  maxReplicas: 5
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: backend-php-{{ .Release.Name }}
+  targetCPUUtilizationPercentage: 50
+{{ end }}

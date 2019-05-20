@@ -88,7 +88,7 @@ spec:
         - containerPort: 5432
         resources: {}
         volumeMounts:
-        - mountPath: /var/lib/postgresql/data
+        - mountPath: /var/lib/postgresql/data/
           name: db-data-{{ .Release.Name }}
           subPath: postgres
       restartPolicy: Always
@@ -97,3 +97,18 @@ spec:
         persistentVolumeClaim:
           claimName: db-data-{{ .Release.Name }}
 status: {}
+{{ if .Values.GKE }}
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-db-{{ .Release.Name }}
+spec:
+  maxReplicas: 10
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: backend-db-{{ .Release.Name }}
+  targetCPUUtilizationPercentage: 50
+{{ end }}

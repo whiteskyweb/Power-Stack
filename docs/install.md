@@ -6,6 +6,9 @@
 
 ## On a server
 
+Install helm tiller
+
+
 ## On a Kubernetes cluster
 
 ##

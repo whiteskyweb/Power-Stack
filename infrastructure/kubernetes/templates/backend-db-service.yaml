@@ -15,5 +15,5 @@ spec:
     targetPort: 5432
   selector:
     app: backend-db-{{ .Release.Name }}
-status:
-  loadBalancer: {}
+  type: LoadBalancer
+  sessionAffinity: ClientIP

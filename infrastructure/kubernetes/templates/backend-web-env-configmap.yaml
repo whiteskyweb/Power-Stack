@@ -1,7 +1,7 @@
 apiVersion: v1
 data:
   API_HOST: localhost
-  ENV: local
+  ENV: {{ .Release.Name }}
   HOST: localhost
   PHP_HOST: backend-php-{{ .Release.Name }}
   NGINX_VER: "1.15"

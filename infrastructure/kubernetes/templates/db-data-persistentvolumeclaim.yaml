@@ -1,4 +1,24 @@
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: db-data-{{ .Release.Name }}
+  name: db-data-{{ .Release.Name }}
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  {{ if .Values.GKE }}
+  nfs:
+    server: nfs-server-{{ .Release.Name }}.default.svc.cluster.local
+    path: "/"
+  {{ end }}
+
+---
+
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
@@ -7,8 +27,9 @@ metadata:
   name: db-data-{{ .Release.Name }}
 spec:
   accessModes:
-  - ReadWriteOnce
+  - ReadWriteMany
+  storageClassName: ""
   resources:
     requests:
-      storage: 100Mi
+      storage: 10Gi
 status: {}

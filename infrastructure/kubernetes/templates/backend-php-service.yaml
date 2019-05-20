@@ -15,5 +15,5 @@ spec:
     targetPort: 9000
   selector:
     app: backend-php-{{ .Release.Name }}
-status:
-  loadBalancer: {}
+  type: LoadBalancer
+  sessionAffinity: ClientIP
