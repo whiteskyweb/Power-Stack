@@ -1,0 +1,5 @@
+[build]
+
+  base = "frontend-code"
+  command = "echo $BUILD_VARS | base64 -d > ../.env && export $(cat ../.env | sed 's/#.*//g' | xargs) && gatsby build"
+  publish = "frontend-code/public"

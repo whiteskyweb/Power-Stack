@@ -3,25 +3,28 @@ kind: PersistentVolume
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: web-files
-  name: web-files
+    io.kompose.service: web-files-{{ .Release.Name }}
+  name: web-files-{{ .Release.Name }}
 spec:
   capacity:
     storage: 10Gi
   accessModes:
     - ReadWriteMany
+  {{ if .Values.GKE }}
   nfs:
-    server: nfs-server.default.svc.cluster.local
+    server: nfs-server-{{ .Release.Name }}.default.svc.cluster.local
     path: "/"
+  {{ end }}
 
 ---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: web-files
-  name: web-files
+    io.kompose.service: web-files-{{ .Release.Name }}
+  name: web-files-{{ .Release.Name }}
 spec:
   accessModes:
   - ReadWriteMany
