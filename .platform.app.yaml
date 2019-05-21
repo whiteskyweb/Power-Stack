@@ -49,9 +49,7 @@ hooks:
     deploy: |
         set -e
         php ./drush/platformsh_generate_drush_yml.php
-        cd backend-code
-        composer install
-        cd web
+        cd backend-code/web
         drush -y cache-rebuild
         drush -y updatedb
         drush -y config-import
@@ -60,11 +58,11 @@ hooks:
 web:
     # Specific parameters for different URL prefixes.
     locations:
-        '/':
+        'backend-code/':
             # The folder from which to serve static assets, for this location.
             #
             # This is a filesystem path, relative to the application root.
-            root: 'backend-code/web'
+            root: 'web'
 
             # How long to allow static assets from this location to be cached.
             #
