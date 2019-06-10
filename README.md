@@ -9,20 +9,23 @@ with boilerplate to get a modern API-based containerised web app up and
 running in no time. This code has been setup to try and adhere to the 12-factor principles wherever possible. This repo gives you access to the 
 following micro-service based architecture:
 
-  - Frontend (Netlify)
+  - Frontend
     - Gatsby (React)
-  - Backend (Kubernetes)
+  - Backend 
     - Drupal 8 (PHP)
-  - Database (Kubernetes)
-    - Postgres
-  - Caching (Kubernetes)
+  - Database
+    - MySQL
+  - Caching
     - Redis
+    
+## Hosting
+
+
 
 ## Requirements
 
   - Docker
   - Docker Compose
-  - Kubernetes
   - NPM
   - Yarn
 
