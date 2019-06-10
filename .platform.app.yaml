@@ -41,14 +41,19 @@ mounts:
 
 # Configuration of the build of this application.
 build:
-    flavor: composer
+    flavor: none
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     # The deploy hook runs after your application has been deployed and started.
+    build: |
+        set -e
+        cd backend-code
+        composer --no-ansi --no-interaction install --no-progress --prefer-dist --optimize-autoloader
+        composer require platformsh/config-reader
+
     deploy: |
         set -e
-        php ./drush/platformsh_generate_drush_yml.php
         cd backend-code/web
         drush -y cache-rebuild
         drush -y updatedb
@@ -58,11 +63,11 @@ hooks:
 web:
     # Specific parameters for different URL prefixes.
     locations:
-        'backend-code/':
+        '/':
             # The folder from which to serve static assets, for this location.
             #
             # This is a filesystem path, relative to the application root.
-            root: 'web'
+            root: 'backend-code/web'
 
             # How long to allow static assets from this location to be cached.
             #
