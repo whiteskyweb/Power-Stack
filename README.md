@@ -37,3 +37,6 @@ To get started with Power Stack please refer to the following documentation:
 
 [Available Variables](docs/variables.md)
 
+
+
+Browser testing kindly provided by [<img src="https://i.imgur.com/qMhoqZP.png" width="100">](https://www.browserstack.com/) 
