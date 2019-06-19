@@ -1,0 +1,11 @@
+{
+  "name": "white-sky-web/power-stack",
+  "description": "Project template Power Stack",
+  "type": "project",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Xavier Mirabelli-Montan"
+    }
+  ]
+}
