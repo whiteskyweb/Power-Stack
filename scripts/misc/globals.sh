@@ -1,7 +1,5 @@
 #! /bin/bash
 
-export PS_VERSION=0.0.3
-
 export NC='\033[0m' # No Color
 export GREEN_BG='\033[42m'
 export GREEN='\033[0;32m'
@@ -29,5 +27,3 @@ cat << "EOF"
 
 
 EOF
-
-echo Version: $PS_VERSION

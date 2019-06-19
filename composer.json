@@ -7,5 +7,16 @@
     {
       "name": "Xavier Mirabelli-Montan"
     }
-  ]
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "scripts/installer/installer.sh"
+    ],
+    "post-update-cmd": [
+      "scripts/installer/installer.sh"
+    ]
+  }
 }
