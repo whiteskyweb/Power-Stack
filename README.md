@@ -27,16 +27,16 @@ following micro-service based architecture:
   - Docker
   - Docker Compose
   - NPM
-  - Yarn
 
-## Instructions
+## Installation
 
-To get started with Power Stack please refer to the following documentation:
+The installation is quite time consuming so you will need to up your process timeout as follows:
 
-[Installation](docs/install.md)
+`composer --global config process-timeout 2000`
 
-[Available Variables](docs/variables.md)
+Then install:
 
+`composer create-project white-sky-web/power-stack power-stack --no-interaction`
 
 
 Browser testing kindly provided by [<img src="https://i.imgur.com/qMhoqZP.png" width="100">](https://www.browserstack.com/) 
