@@ -82,7 +82,7 @@
             "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "drupal-scaffold": {
-            "source": "https://raw.githubusercontent.com/drupal/drupal/{version}/{path}",
+            "source": "https://git.drupalcode.org/project/drupal/raw/{version}/{path}",
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"

@@ -770,19 +770,19 @@ $settings['entity_update_batch_size'] = 50;
 # }
 
 
-$databases['default']['default'] = [
-  'database' => getenv('POSTGRES_DB'),
-  'driver' => 'pgsql',
-  'host' => getenv('POSTGRES_HOSTNAME'),
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\pgsql',
-  'password' => getenv('POSTGRES_PASSWORD'),
-  'port' => getenv('POSTGRES_PORT'),
-  'prefix' => '',
-  'username' => getenv('POSTGRES_USER'),
-];
-
-$settings['reverse_proxy'] = TRUE;
-$settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
+//$databases['default']['default'] = [
+//  'database' => getenv('POSTGRES_DB'),
+//  'driver' => 'pgsql',
+//  'host' => getenv('POSTGRES_HOSTNAME'),
+//  'namespace' => 'Drupal\\Core\\Database\\Driver\\pgsql',
+//  'password' => getenv('POSTGRES_PASSWORD'),
+//  'port' => getenv('POSTGRES_PORT'),
+//  'prefix' => '',
+//  'username' => getenv('POSTGRES_USER'),
+//];
+//
+//$settings['reverse_proxy'] = TRUE;
+//$settings['reverse_proxy_addresses'] = array($_SERVER['REMOTE_ADDR']);
 
 $databases = [];
 $config_directories = [];
@@ -804,6 +804,9 @@ $settings['file_scan_ignore_directories'] = [
 // This is defined inside the read-only "config" directory, deployed via Git.
 $config_directories['sync'] = '../config/sync';
 // Automatic Platform.sh settings.
-if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
-  include $app_root . '/' . $site_path . '/settings.platformsh.php';
+
+if(!empty(getenv('PLATFORM_APP_DIR'))) {
+  if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
+    include $app_root . '/' . $site_path . '/settings.platformsh.php';
+  }
 }

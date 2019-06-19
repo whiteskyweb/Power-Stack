@@ -12,14 +12,14 @@ if (!$platformsh->inRuntime()) {
 
 // Configure the database.
 $creds = $platformsh->credentials('database');
+
 $databases['default']['default'] = [
   'driver' => $creds['scheme'],
   'database' => $creds['path'],
   'username' => $creds['username'],
   'password' => $creds['password'],
   'host' => $creds['host'],
-  'port' => $creds['port'],
-  'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
+  'port' => $creds['port']
 ];
 
 // Enable Redis caching.
