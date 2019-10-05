@@ -17,6 +17,12 @@
         "symplify/monorepo-builder": "^6.1",
         "phpunit/phpunit": "^7.3"
     },
+    "autoload": {
+        "psr-4": {
+            "YourMonorepo\\FirstPackage\\": "packages/first-package/src",
+            "YourMonorepo\\SecondPackage\\": "packages/second-package/src"
+        }
+    },
     "replace": {
         "whiteskyweb/power-stack-back-end": "self.version",
         "your-monorepo/second-package": "self.version"
