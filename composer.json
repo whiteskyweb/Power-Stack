@@ -29,7 +29,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "cd frontend-code; npm -i"
+            "cd frontend-code; npm install"
         ],
         "post-update-cmd": [
             "cd frontend-code; npm update"
