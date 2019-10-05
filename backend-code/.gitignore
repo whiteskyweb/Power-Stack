@@ -2,9 +2,12 @@
 /drush/contrib/
 /vendor/
 /web/core/
-/web/modules/contrib/
-/web/themes/contrib/
-/web/profiles/contrib/
+/web/modules/contrib/*
+!web/modules/contrib/seaside_admin_toolbar
+/web/themes/contrib/*
+!web/themes/contrib/seaside_admin
+/web/profiles/contrib/*
+!web/profiles/contrib/power_stack_distro
 /web/libraries/
 
 # Ignore sensitive information

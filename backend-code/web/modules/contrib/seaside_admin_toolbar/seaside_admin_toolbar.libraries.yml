@@ -1,0 +1,9 @@
+seaside-admin-toolbar:
+  version: VERSION
+  js:
+    js/seaside_admin_toolbar.js: {}
+  css:
+    theme:
+      css/seaside_admin_toolbar.css: {}
+  dependencies:
+    - core/jquery.cookie

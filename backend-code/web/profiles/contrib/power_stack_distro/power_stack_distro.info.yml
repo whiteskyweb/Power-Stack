@@ -1,0 +1,71 @@
+name: Power Stack Distro
+type: profile
+description: 'Install and setup Power Stack'
+distribution:
+  name: Power Stack
+  install:
+    theme: seaside_admin
+# core: 8.x
+install:
+  - node
+  - history
+  - ban
+  - inline_form_errors
+  - media
+  - media_library
+  - serialization
+  - jsonapi
+  - jsonapi_extras
+  - paragraphs
+  - profile
+  - token
+  - migrate
+  - migrate_drupal
+  - migrate_drupal_ui
+  - content_translation
+  - config_translation
+  - language
+  - image_widget_crop
+  - crop
+  - flag
+  - flag_bookmark
+  - url_embed
+  - datetime_range
+  - telephone
+  - field_group
+  - locale
+  - seaside_admin_toolbar
+  - block
+  - color
+  - config
+  - contextual
+  - menu_link_content
+  - datetime
+  - block_content
+  - editor
+  - help
+  - image
+  - menu_ui
+  - options
+  - path
+  - page_cache
+  - dynamic_page_cache
+  - big_pipe
+  - taxonomy
+  - dblog
+  - search
+  - field_ui
+  - file
+  - rdf
+  - views
+  - views_ui
+  - automated_cron
+
+themes:
+  - seaside_admin
+
+# Information added by Drupal.org packaging script on 2019-06-18
+version: '8.x-1.9'
+core: '8.x'
+project: 'power_stack_distro'
+datestamp: 1560872302

@@ -1,0 +1,8 @@
+<?php
+
+function power_stack_distro_install() {
+  \Drupal::service('theme_installer')->install(['seaside_admin']);
+  \Drupal::service('theme_handler')->setDefault('seaside_admin');
+  \Drupal::configFactory()->getEditable('system.theme')->set('admin', 0)->save(TRUE);
+  \Drupal::configFactory()->getEditable('system.theme')->set('default', 'seaside_admin')->save(TRUE);
+}

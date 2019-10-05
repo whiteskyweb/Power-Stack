@@ -17,4 +17,6 @@ parameters:
         backend-code: 'git@github.com:whiteskyweb/power-stack-back-end.git'
         frontend-code: 'git@github.com:whiteskyweb/power-stack-front-end.git'
         scripts: 'git@github.com:whiteskyweb/power-stack-scripts.git'
+        backend-code/web/themes/contrib/seaside_admin: 'git@github.com:whiteskyweb/seaside_admin.git'
+        backend-code/web/modules/contrib/seaside_admin_toolbar: 'git@github.com:whiteskyweb/seaside_admin_toolbar.git'
         infrastructure: 'git@github.com:whiteskyweb/power-stack-infrastructure.git'
