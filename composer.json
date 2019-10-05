@@ -1,22 +1,38 @@
 {
-  "name": "white-sky-web/power-stack",
-  "description": "Project template Power Stack",
-  "type": "project",
-  "license": "GPL-2.0-or-later",
-  "authors": [
-    {
-      "name": "Xavier Mirabelli-Montan"
-    }
-  ],
-  "require": {
-    "php": ">=7.1"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "scripts/installer/installer.sh"
+    "name": "white-sky-web/power-stack",
+    "type": "project",
+    "description": "Project template Power Stack",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Xavier Mirabelli-Montan"
+        }
     ],
-    "post-update-cmd": [
-      "scripts/installer/installer.sh"
-    ]
-  }
+    "require": {
+        "php": "^7.1",
+        "symfony/dependency-injection": "^4.1",
+        "symfony/http-kernel": "^4.1"
+    },
+    "require-dev": {
+        "symplify/monorepo-builder": "^6.1",
+        "phpunit/phpunit": "^7.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "YourMonorepo\\FirstPackage\\": "packages/first-package/src",
+            "YourMonorepo\\SecondPackage\\": "packages/second-package/src"
+        }
+    },
+    "replace": {
+        "your-monorepo/first-package": "self.version",
+        "your-monorepo/second-package": "self.version"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "cd frontend-code; npm -i"
+        ],
+        "post-update-cmd": [
+            "cd frontend-code; npm update"
+        ]
+    }
 }

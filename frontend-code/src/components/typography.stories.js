@@ -6,7 +6,7 @@ storiesOf('Typograpy|Headings', module)
    .add('Heading 1', () => <h1 style={{
       color: `linear-gradient(0.35turn, #66BDA4, #007F90)`,
       fontFamily: `Josefin Sans`,
-      fontSize: 2em,
+      fontSize: `2em`,
       marginBottom: `1.45rem`,
     }}>Test</h1>)
    .add('Heading 2', () => <h2 style={{

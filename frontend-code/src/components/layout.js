@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
-import Header from './header'
+import Header from './header/header'
+import Footer from './footer/footer'
 import './layout.css'
 
 const Layout = ({ children }) => (
@@ -22,20 +23,12 @@ const Layout = ({ children }) => (
         <div
           style={{
             margin: `0 auto`,
-            maxWidth: 960,
             padding: `0px 1.0875rem 1.45rem`,
             paddingTop: 0,
           }}
         >
           {children}
-          <footer>
-            © {new Date().getFullYear()}, {` `}
-            <a href="https://www.gatsbyjs.org">Power Stack</a>
-            {` `}
-            Built with ♥ in Brighton
-
-
-          </footer>
+          <Footer />
         </div>
       </>
     )}

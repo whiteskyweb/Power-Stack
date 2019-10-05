@@ -1,0 +1,7 @@
+name: Power Stack K8s
+description: A generated Helm Chart for ../docker-compose/docker-compose from Skippbox Kompose
+version: 0.0.1
+keywords:
+  - ../docker-compose/docker-compose
+sources:
+home:

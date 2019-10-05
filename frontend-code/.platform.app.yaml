@@ -1,0 +1,45 @@
+
+# .platform.app.yaml
+
+# The name of this application, which must be unique within a project.
+name: 'gatsbyjs'
+
+# The type key specifies the language and version for your application.
+type: 'nodejs:10'
+
+dependencies:
+    nodejs:
+        gatsby-cli: "^2.6.5"
+
+
+mounts:
+#    'public': 'shared:files/public'
+    '/.cache': 'shared:files/.cache'
+#    '/.config': 'shared:files/.config'
+
+# The hooks that will be triggered when the package is deployed.
+#hooks:
+    # Build hooks can modify the application files on disk but not access any services like databases.
+#    build: |
+#        gatsby build
+
+# The size of the persistent disk of the application (in MB).
+disk: 1024
+
+# The configuration of the application when it is exposed to the web.
+web:
+    commands:
+        start: "gatsby develop -p $PORT -H 0.0.0.0"
+    locations:
+#        '/':
+#            root: 'public'
+#            index:
+#                - "index.html"
+#            scripts: false
+#            allow: true
+#            passthru: false
+        '/':
+            root: ''
+            passthru: true
+            scripts: true
+            allow: true
