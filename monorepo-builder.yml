@@ -15,6 +15,7 @@ parameters:
     # for "split" command
     directories_to_repositories:
         backend-code: 'git@github.com:whiteskyweb/power-stack-back-end.git'
+        backend-code/web/profiles/contrib/power_stack_distro: 'git@github.com:whiteskyweb/power-stack-profile.git'
         frontend-code: 'git@github.com:whiteskyweb/power-stack-front-end.git'
         scripts: 'git@github.com:whiteskyweb/power-stack-scripts.git'
         backend-code/web/themes/contrib/seaside_admin: 'git@github.com:whiteskyweb/seaside_admin.git'
