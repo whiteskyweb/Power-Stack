@@ -14,6 +14,7 @@ form {
     &.form-number,
     &.form-autocomplete {
       width: auto;
+      display: inline;
     }
 
     &.error {
@@ -140,7 +141,7 @@ form {
 
     label {
       font-weight: 500;
-      line-height: 2.5em;
+      line-height: 1em;
     }
   }
 
@@ -253,21 +254,13 @@ form {
     legend {
       font-size: pxtoem(16px);
       font-weight: 500;
-      left: 54px;
+      left: 20px;
       line-height: inherit;
       padding: 0;
       position: absolute;
       top: 24px;
 
       span {
-        &::before {
-          @include icomoon('arrows_right', 'linea');
-
-          font-size: pxtoem(20px);
-          left: -30px;
-          line-height: inherit;
-          position: absolute;
-        }
 
         &.form-required {
           color: $dark-blue-grey;
@@ -287,7 +280,7 @@ form {
   }
 
   .form-wrapper + .form-wrapper {
-    margin: 30px 0 0;
+    margin: 0;
   }
 
   .fieldgroup {
@@ -317,24 +310,6 @@ form {
     }
   }
 
-  //.container-inline {
-  //  &:not('form-wrapper') {
-  //    @include flex;
-  //
-  //    .form-item {
-  //      margin-bottom: 0;
-  //
-  //      input {
-  //        display: inline-block;
-  //      }
-  //
-  //      .field-suffix {
-  //        margin: 0 10px;
-  //      }
-  //    }
-  //  }
-  //}
-
   // Form item
   .form-item {
     margin-bottom: 30px;
@@ -350,7 +325,20 @@ form {
     }
 
     label {
-      font-size: pxtoem(16px);
+      font-size: pxtoem(14px);
+      font-weight: 500;
+      line-height: 2em;
+      display: block;
+    }
+
+    &.form-type-checkbox {
+      label {
+        display: inline-flex;
+      }
+    }
+
+    &.form-type-textarea {
+      padding-top: 20px;
     }
 
     // Cardinality elements
@@ -438,14 +426,15 @@ form {
 
 // DETAILS
 details {
+  &.card, &summary{
+    &:not([open]) {
+      background: $med-grey;
+      @include drop-shadow(transparent);
+    }
+  }
   &.form-wrapper {
     margin: 0 0 30px;
     padding: 0;
-
-    &:last-child {
-      //border-bottom: 0
-      margin-bottom: 0;
-    }
 
     summary {
       cursor: pointer;
@@ -459,10 +448,6 @@ details {
 
       &::-webkit-details-marker { // sass-lint:disable-line no-vendor-prefixes
         display: none;
-      }
-
-      &:hover {
-        background-color: $pale-grey;
       }
 
       &:before {
@@ -579,7 +564,7 @@ details {
   margin-bottom: 30px;
 
   .form-search {
-    border: pxtoem(1px) solid $cool-grey;
+    border: 2px solid $med-grey;
     display: block;
     padding: pxtoem(5px, 8px, 5px, 8px);
     width: 100%;

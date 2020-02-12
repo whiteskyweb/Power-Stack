@@ -68,7 +68,8 @@ class SeasideAdminToolbarForm extends ConfigFormBase {
       '#default_value' => (!empty($config->get('color_profile'))) ? $config->get('color_profile') : 'brighton',
       '#options'       => array(
         'brighton' => t('Brighton'),
-        'san-francisco'     => t('San Francisco'),
+        'san-francisco' => t('San Francisco'),
+        'bondi' => t('Bondi'),
       ),
       '#description' => t('Use this setting to setup a specific color in the toolbar.'),
     );

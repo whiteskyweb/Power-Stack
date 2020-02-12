@@ -50,6 +50,7 @@ function _seaside_admin_theme_get_colors(&$form) {
     '#options'       => array(
       'brighton' => t('Brighton'),
       'san-francisco'     => t('San Francisco'),
+      'bondi'     => t('Bondi'),
     ),
   );
 }

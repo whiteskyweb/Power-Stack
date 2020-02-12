@@ -147,12 +147,12 @@ function seaside_admin_toolbar_toolbar_alter(&$items) {
   // Check for user profile pic.  If nothing exists go to gravatar.
   $image_source = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($user->get('mail')->value))) . '?s=40&r=pg&d=mp';
 
-//  if(!$user->get('user_picture')->isEmpty()) {
-//    $pic_uri = $user->get('user_picture')->entity->getFileUri();
-//    $pic_url = file_create_url($pic_uri);
-//
-//    $image_source = $pic_url;
-//  }
+  if(!$user->get('user_picture')->isEmpty()) {
+    $pic_uri = $user->get('user_picture')->entity->getFileUri();
+    $pic_url = file_create_url($pic_uri);
+
+    $image_source = $pic_url;
+  }
 
   $items['user_menu'] = [
     '#type' => 'toolbar_item',

@@ -6,7 +6,7 @@
       function paragraphWidths() {
         $('table[id*="field-column-values"] tr').each(function (i) {
           value = $(this).find('select[data-drupal-selector*="subform-field-width"] option:selected').text();
-          console.log(value);
+
           $(this).css('width', 'calc('+ value +' * 100%)');
           if (value === "Full") {
             $(this).css('width', 'calc(1 * 100%)');

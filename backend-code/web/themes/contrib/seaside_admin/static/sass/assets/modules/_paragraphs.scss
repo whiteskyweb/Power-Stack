@@ -41,9 +41,12 @@
     border: 0;
     margin: 0;
     padding: 0;
+    &.form-type-textarea {
+      padding: 20px 0 0;
+    }
   }
 
-  .paragraphs-dropbutton-wrapper {
+  .paragraphs-dropbutton-wrapper.center {
     input[type='submit']:not([data-drupal-selector*="remove-button"]) {
       background: $med-grey;
       //border: pxtoem(2px) solid $med-grey;
@@ -115,8 +118,12 @@
       background-color: $status-warning-bg
     }
   }
+  thead {
+    display: none;
+  }
 
   tr {
+    margin-bottom: 20px;
     &:nth-child(even) {
       background: none;
     }
@@ -130,6 +137,9 @@
         display: block;
         padding: 10px;
         min-height: 65px;
+        &.card {
+          padding: 20px;
+        }
         tr  {
           width: 100%;
           float: left;
@@ -173,10 +183,6 @@
     left: 10px;
     position: absolute;
     top: 10px;
-  }
-
-  label {
-    display: none;
   }
 
   .paragraphs-subform {

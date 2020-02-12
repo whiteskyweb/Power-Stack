@@ -29,7 +29,6 @@ rules:
   no-empty-rulesets: 1
   no-extends: 0
   no-ids: 0
-  no-important: 1
   no-invalid-hex: 1
   no-mergeable-selectors: 1
   no-misspelled-properties: 1
@@ -71,7 +70,7 @@ rules:
   leading-zero: 0
   max-line-length: 0
   max-file-line-count: 0
-  nesting-depth: 6
+  nesting-depth: 0
   property-sort-order: 1
   pseudo-element: 0
   quotes: single

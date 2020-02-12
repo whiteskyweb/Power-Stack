@@ -31,6 +31,8 @@
 @import 'assets/modules/devel';
 @import 'assets/modules/inline-entity-form';
 @import 'assets/modules/entity_browser';
+@import 'assets/modules/quill';
+@import 'assets/modules/media-library';
 
 // Basic layout styling
 @import 'base/layout';
@@ -58,3 +60,4 @@
 @import 'pages/appearance';
 
 @import 'profiles/profile-1';
+@import 'profiles/profile-2';

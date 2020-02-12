@@ -9,8 +9,7 @@
         view.item = $(options.el);
         view.callback = options.callback || null;
         view.count = 0;
-
-        if (!view.item.hasClass('no-prettify')) {
+        if (!view.item.hasClass('no-prettify') && !view.item.hasClass('ql-header')) {
           var tagname = options.el.tagName.toLowerCase();
           view._setEventHandlers();
 

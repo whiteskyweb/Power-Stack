@@ -125,6 +125,11 @@
                 font-weight: bold;
               }
 
+              &:hover {
+                @include gradient(darken($med-grey, 20%), darken($med-grey, 20%));
+                color: $dark-three;
+              }
+
               .dropbutton-arrow {
                 border-bottom: 0.3333em solid $white;
               }
@@ -177,7 +182,6 @@
           .dropbutton-toggle {
             button {
               background-color: $med-grey;
-
               &:after {
                 color: $dark-three;
                 font-weight: normal;
@@ -229,7 +233,6 @@
               .dropbutton-toggle {
                 button {
                   @include gradient(darken($med-grey, 20%), darken($med-grey, 20%));
-
                   &:after {
                     font-weight: normal;
                   }
@@ -256,6 +259,10 @@
         button {
           &:after {
             top: 8px;
+          }
+          &:hover {
+            @include gradient(darken($med-grey, 20%), darken($med-grey, 20%));
+            color: $dark-three;
           }
         }
       }

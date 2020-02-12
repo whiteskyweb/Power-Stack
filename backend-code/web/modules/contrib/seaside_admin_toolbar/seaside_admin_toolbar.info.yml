@@ -6,8 +6,8 @@ dependencies:
   - admin_toolbar
   - admin_toolbar_tools
 
-# Information added by Drupal.org packaging script on 2019-06-18
-version: '8.x-1.10'
+# Information added by Drupal.org packaging script on 2019-06-28
+version: '8.x-1.12'
 core: '8.x'
 project: 'seaside_admin_toolbar'
-datestamp: 1560872292
+datestamp: 1561726705
