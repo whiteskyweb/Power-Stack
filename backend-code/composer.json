@@ -27,7 +27,7 @@
         "drupal/core": "^0.0.22",
         "drupal/gatsby": "^0.0.22",
         "drupal/http_client_manager": "^0.0.22",
-        "drupal/power_stack_distro": "^0.0.22",
+        "whiteskyweb/power_stack_distro": "^0.0.22",
         "drupal/serial": "^0.0.22",
         "drupal/upgrade_status": "^0.0.22",
         "drush/drush": "^9.0.0",
