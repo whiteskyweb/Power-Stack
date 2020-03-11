@@ -22,3 +22,6 @@ parameters:
         backend-code/web/modules/contrib/seaside_admin_toolbar: 'git@github.com:whiteskyweb/seaside_admin_toolbar.git'
         infrastructure: 'git@github.com:whiteskyweb/power-stack-infrastructure.git'
 
+
+    services:
+        PowerStack\Monorepo: ~

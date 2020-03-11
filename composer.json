@@ -1,5 +1,5 @@
 {
-    "name": "white-sky-web/power-stack",
+    "name": "whiteskyweb/power-stack",
     "type": "project",
     "description": "Project template Power Stack",
     "license": "GPL-2.0-or-later",
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "YourMonorepo\\FirstPackage\\": "packages/first-package/src",
+            "PowerStack\\Monorepo\\": "scripts/monorepo",
             "YourMonorepo\\SecondPackage\\": "packages/second-package/src"
         }
     },
