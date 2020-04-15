@@ -8,8 +8,8 @@ parameters:
         - 'backend-code'
         - 'scripts'
         - 'infrastructure'
-        - 'backend-code/web/themes/contrib/seaside_admin'
-        - 'backend-code/web/modules/contrib/seaside_admin_toolbar'
+        # - 'backend-code/web/themes/contrib/seaside_admin'
+        # - 'backend-code/web/modules/contrib/seaside_admin_toolbar'
         - 'frontend-code'
 
     # for "split" command
@@ -22,6 +22,8 @@ parameters:
         backend-code/web/modules/contrib/seaside_admin_toolbar: 'git@github.com:whiteskyweb/seaside_admin_toolbar.git'
         infrastructure: 'git@github.com:whiteskyweb/power-stack-infrastructure.git'
 
+    # enable_default_release_workers: false
 
-    services:
-        PowerStack\Monorepo: ~
+    # services:
+    #     PowerStack\Monorepo\:
+    #         resource: './scripts/monorepo/'
