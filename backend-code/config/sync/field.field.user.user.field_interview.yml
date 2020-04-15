@@ -1,0 +1,30 @@
+uuid: 1e762e80-4e21-4725-8641-3beb2c93e693
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_interview
+  module:
+    - allowed_formats
+    - text
+    - user
+third_party_settings:
+  allowed_formats:
+    filtered: filtered
+    code: '0'
+    plain_text: '0'
+id: user.user.field_interview
+field_name: field_interview
+entity_type: user
+bundle: user
+label: Interview
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: '<p><br></p>'
+    format: filtered
+default_value_callback: ''
+settings: {  }
+field_type: text_long

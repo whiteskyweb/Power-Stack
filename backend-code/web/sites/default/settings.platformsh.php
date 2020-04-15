@@ -12,15 +12,29 @@ if (!$platformsh->inRuntime()) {
 
 // Configure the database.
 $creds = $platformsh->credentials('database');
+
+
+
 $databases['default']['default'] = [
   'driver' => $creds['scheme'],
-  'database' => $creds['path'],
+  'database' => 'main',
   'username' => $creds['username'],
   'password' => $creds['password'],
   'host' => $creds['host'],
   'port' => $creds['port'],
   'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
 ];
+
+$databases['mg_legacy']['default'] = [
+  'driver' => $creds['scheme'],
+  'database' => 'migration',
+  'username' => $creds['username'],
+  'password' => $creds['password'],
+  'host' => $creds['host'],
+  'port' => $creds['port'],
+  'pdo' => [PDO::MYSQL_ATTR_COMPRESS => !empty($creds['query']['compression'])]
+];
+
 
 // Enable Redis caching.
 if ($platformsh->hasRelationship('redis') && !drupal_installation_attempted() && extension_loaded('redis')) {

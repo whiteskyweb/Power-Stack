@@ -1,0 +1,24 @@
+uuid: 22403600-2401-4119-a033-4911134bf062
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.map.field_map
+    - paragraphs.paragraphs_type.map
+  module:
+    - geofield
+id: paragraph.map.default
+targetEntityType: paragraph
+bundle: map
+mode: default
+content:
+  field_map:
+    weight: 0
+    label: above
+    settings:
+      output_format: wkt
+      output_escape: true
+    third_party_settings: {  }
+    type: geofield_default
+    region: content
+hidden: {  }

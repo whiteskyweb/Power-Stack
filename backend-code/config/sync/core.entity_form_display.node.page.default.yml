@@ -1,0 +1,183 @@
+uuid: 4fd1a851-b6ef-421a-9538-50720bbf7a06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.field_featured
+    - field.field.node.page.field_hero_image
+    - field.field.node.page.field_page_builder
+    - field.field.node.page.field_primary_image
+    - node.type.page
+  module:
+    - field_group
+    - media_library
+    - paragraphs
+    - path
+third_party_settings:
+  field_group:
+    group_page_builder:
+      children: {  }
+      parent_name: group_content
+      weight: 3
+      format_type: tab
+      format_settings:
+        description: ''
+        open: true
+        required_fields: true
+        id: ''
+        classes: ''
+        formatter: closed
+      label: 'Page builder'
+      region: content
+    group_tabs:
+      children:
+        - group_images
+        - group_content
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        direction: vertical
+        id: ''
+        classes: ''
+      label: Tabs
+      region: content
+    group_language:
+      children:
+        - langcode
+      parent_name: ''
+      weight: 11
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+      label: Language
+      region: hidden
+    group_content:
+      children:
+        - field_page_builder
+        - group_page_builder
+      parent_name: group_tabs
+      weight: 3
+      format_type: details
+      format_settings:
+        id: ''
+        classes: ''
+        effect: none
+        open: false
+        required_fields: true
+      label: Content
+      region: content
+    group_images:
+      children:
+        - field_primary_image
+      parent_name: group_tabs
+      weight: 2
+      format_type: tab
+      format_settings:
+        id: ''
+        classes: ''
+        description: ''
+        formatter: closed
+        required_fields: true
+      label: Images
+      region: content
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_featured:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_hero_image:
+    type: media_library_widget
+    weight: 10
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_page_builder:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_primary_image:
+    weight: 11
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 5
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 8
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 6
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden:
+  langcode: true

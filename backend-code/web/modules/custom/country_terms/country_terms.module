@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for Country terms module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+function country_terms_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if($form_id == 'node_page_edit_form') {
+    $form['actions']['preview']['#access'] = FALSE;
+  }
+}
+
+function country_terms_preprocess_node(&$vars) {
+
+  if (\Drupal::moduleHandler()->moduleExists('build_hooks')) {
+    $config = \Drupal::config('build_hooks.frontend_environment');
+    $url = $config->get('url');
+    $f = '';
+  }
+
+  if (isset($vars['url'])) {
+    $config = \Drupal::config('gatsby.settings');
+    $url = $config->get('server_url');
+    $vars['content']['preview_url'] = $url . $vars['url'];
+  }
+}
+
+function country_terms_theme($existing, $type, $theme, $path) {
+  return [
+    'node__page' => [
+      'template' => 'node--page',
+      'base hook' => 'node'
+    ]
+  ];
+}

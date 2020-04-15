@@ -1,0 +1,21 @@
+uuid: 8e4944ba-6978-48db-9896-3d36bdfae6c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.search.field_categories
+    - paragraphs.paragraphs_type.search
+id: paragraph.search.default
+targetEntityType: paragraph
+bundle: search
+mode: default
+content:
+  field_categories:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+hidden:
+  created: true
+  status: true

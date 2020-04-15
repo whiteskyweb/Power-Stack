@@ -1,0 +1,7 @@
+country_terms.settings_form:
+  path: '/admin/config/system/country-terms'
+  defaults:
+    _title: 'Country terms settings'
+    _form: 'Drupal\country_terms\Form\SettingsForm'
+  requirements:
+    _permission: 'administer country_terms configuration'

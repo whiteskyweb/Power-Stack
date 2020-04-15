@@ -1,0 +1,27 @@
+display:
+  default:
+    display_title: Maître
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Appliquer
+          reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Éléments par page'
+            items_per_page_options_all_label: '- Tout -'
+            offset_label: Décalage
+      fields:
+        message:
+          label: 'Journal des modifications'
+      title: 'Journal des modifications'
+      arguments:
+        wid:
+          exception:
+            title: Tout
+  embed_1:
+    display_title: Intégré
+  page_1:
+    display_title: 'Journal des modifications'

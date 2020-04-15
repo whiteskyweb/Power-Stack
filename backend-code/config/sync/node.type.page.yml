@@ -1,0 +1,18 @@
+uuid: 604467f5-357d-45a3-b550-3ef51b0f4a14
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - primary-navigation-en
+    parent: 'primary-navigation-en:'
+name: Page
+type: page
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

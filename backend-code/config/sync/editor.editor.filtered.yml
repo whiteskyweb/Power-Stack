@@ -1,0 +1,15 @@
+uuid: 91645345-e006-4671-9ab1-03cfb081debb
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.filtered
+  module:
+    - quill
+format: filtered
+editor: quill
+settings:
+  placeholder: ''
+  theme: snow
+  paste_without_formatting: 0
+image_upload: {  }

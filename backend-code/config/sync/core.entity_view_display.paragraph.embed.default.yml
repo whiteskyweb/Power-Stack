@@ -1,0 +1,21 @@
+uuid: ac723f03-3b65-4867-a61e-557d120b203e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.embed.field_embed
+    - paragraphs.paragraphs_type.embed
+id: paragraph.embed.default
+targetEntityType: paragraph
+bundle: embed
+mode: default
+content:
+  field_embed:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

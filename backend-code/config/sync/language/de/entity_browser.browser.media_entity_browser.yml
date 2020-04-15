@@ -1,0 +1,9 @@
+label: 'Browser für Medienentitäten'
+display_configuration:
+  link_text: 'Medium auswählen'
+widgets:
+  6586703a-6976-4124-8a49-cbb07ceaa3b1:
+    settings:
+      submit_text: 'Medium auswählen'
+  ecb3940b-e53b-4bc5-acb5-930d8780ea2f:
+    label: 'Neues Bild hochladen'

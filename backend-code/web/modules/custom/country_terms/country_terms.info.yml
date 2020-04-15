@@ -1,0 +1,8 @@
+name: Country terms
+type: module
+description: Generate countries terms based on the restcountries.eu API
+package: Countries
+core: 8.x
+
+dependencies:
+  - http_client_manager:http_client_manager

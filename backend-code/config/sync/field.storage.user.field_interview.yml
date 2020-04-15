@@ -1,0 +1,19 @@
+uuid: f20512e8-cdad-40f2-86d8-211c86f00a74
+langcode: en
+status: true
+dependencies:
+  module:
+    - text
+    - user
+id: user.field_interview
+field_name: field_interview
+entity_type: user
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

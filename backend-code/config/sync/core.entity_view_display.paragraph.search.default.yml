@@ -1,0 +1,21 @@
+uuid: 6d623ec6-91d4-4841-9628-5102b6e022a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.search.field_categories
+    - paragraphs.paragraphs_type.search
+id: paragraph.search.default
+targetEntityType: paragraph
+bundle: search
+mode: default
+content:
+  field_categories:
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+hidden: {  }

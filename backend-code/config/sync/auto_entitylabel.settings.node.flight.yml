@@ -1,0 +1,7 @@
+status: 1
+pattern: 'Route: [node:field_route_number]'
+php: 0
+escape: false
+dependencies:
+  config:
+    - node.type.flight

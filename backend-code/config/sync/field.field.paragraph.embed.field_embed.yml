@@ -1,0 +1,28 @@
+uuid: e960ef59-ccf7-4fb3-8a70-cdf1e4947185
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_embed
+    - node.type.page
+    - paragraphs.paragraphs_type.embed
+id: paragraph.embed.field_embed
+field_name: field_embed
+entity_type: paragraph
+bundle: embed
+label: Embed
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      page: page
+    sort:
+      field: _none
+    auto_create: null
+    auto_create_bundle: null
+field_type: entity_reference

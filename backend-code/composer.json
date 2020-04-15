@@ -1,5 +1,5 @@
 {
-    "name": "drupal-composer/drupal-project",
+    "name": "whiteskyweb/power-stack-backend",
     "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -16,29 +16,30 @@
         }
     ],
     "require": {
-        "behat/behat": "^3.5",
+        "aws/aws-sdk-php": "^3.0",
+        "consolidation/robo": "^2.0.0",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/allowed_formats": "^1.2",
-        "drupal/auto_entitylabel": "^0.1",
-        "drupal/conditional_fields": "^0.1",
+        "drupal/auto_entitylabel": "^0.0.28",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^0.1",
-        "drupal/gatsby": "^0.1",
-        "drupal/http_client_manager": "^0.1",
-        "whiteskyweb/power_stack_distro": "^0.0.22",
-        "drupal/serial": "^0.1",
-        "drupal/upgrade_status": "^0.1",
-        "drush/drush": "^9.0.0",
+        "drupal/core": "^0.0.28",
+        "drupal/gatsby": "^0.0.28",
+        "drupal/power_stack_distro": "^0.0.28",
+        "drush/drush": "^8.0.0",
+        "monolog/monolog": "^1.0",
+        "platformsh/config-reader": "^2.0",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
         "wikimedia/composer-merge-plugin": "dev-master",
-        "xaviemirmon/quill": "^0.1"
+        "xaviemirmon/quill": "^0.0.28"
     },
     "require-dev": {
-        "drupal/core-dev": "~8.7"
+        "drupal/core-dev": "~8.7",
+        "behat/behat": "^3.5",
+        "drupal/upgrade_status": "^0.0.28"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -84,8 +85,8 @@
             "drupal/core": "-p2"
         },
         "patches": {
-            "drupal/jsonapi_extras": {
-                "Fixing upgrade to 8.8.0 issue": "https://www.drupal.org/files/issues/2019-12-02/3089444-24.patch"
+            "drupal/core": {
+                "Fixing views relationship": "https://www.drupal.org/files/issues/2019-10-28/2457999-223.patch"
             }
         },
         "installer-paths": {

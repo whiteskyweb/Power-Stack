@@ -1,0 +1,122 @@
+operations:
+  getAllCountries:
+    httpMethod: "GET"
+    uri: "all"
+    summary: "Find all the countries."
+    responseClass: "allCountries"
+
+  getCountry:
+    httpMethod: "GET"
+    uri: "alpha/{iso}"
+    summary: "Find a country by iso code."
+    responseClass: "country"
+    parameters:
+      iso:
+        location: "uri"
+        description: "Filter posts by id"
+        required: true
+        type: "string"
+
+models:
+
+  allCountries:
+    type: "array"
+    location: "json"
+    items:
+      "$ref": "country"
+
+  country:
+    type: "object"
+    properties:
+      name:
+        location: "json"
+        type: "string"
+      topLevelDomain:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      alpha2Code:
+        location: "json"
+        type: "string"
+      alpha3Code:
+        location: "json"
+        type: "string"
+      callingCodes:
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      capital:
+        location: "json"
+        type: "string"
+      altSpellings:
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      region:
+        location: "json"
+        type: "string"
+      subregion:
+        location: "json"
+        type: "string"
+      population:
+        location: "json"
+        type: "string"
+      latlng:
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      demonym:
+        location: "json"
+        type: "string"
+      area:
+        location: "json"
+        type: "string"
+      gini:
+        location: "json"
+        type: "string"
+      timezones:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      borders:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      nativeName:
+        location: "json"
+        type: "string"
+      numericCode:
+        location: "json"
+        type: "string"
+      currencies:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      languages:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      translations:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      flag:
+        location: "json"
+        type: "string"
+      regionalBlocs:
+        location: "json"
+        type: "array"
+        items:
+          "$ref": "mapArray"
+      cioc:
+        location: "json"
+        type: "string"
+  mapArray:
+    location: "json"
+    type: "string"

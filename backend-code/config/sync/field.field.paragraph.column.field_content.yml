@@ -1,0 +1,57 @@
+uuid: d992c6bb-ab53-455d-a23c-27784a112d1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content
+    - paragraphs.paragraphs_type.column
+    - paragraphs.paragraphs_type.embed
+    - paragraphs.paragraphs_type.image
+    - paragraphs.paragraphs_type.map
+    - paragraphs.paragraphs_type.search
+    - paragraphs.paragraphs_type.text
+  module:
+    - entity_reference_revisions
+id: paragraph.column.field_content
+field_name: field_content
+entity_type: paragraph
+bundle: column
+label: Content
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      text: text
+      image: image
+      search: search
+      embed: embed
+      map: map
+    target_bundles_drag_drop:
+      column:
+        weight: -11
+        enabled: false
+      text:
+        enabled: true
+        weight: -10
+      image:
+        enabled: true
+        weight: -9
+      row:
+        weight: -8
+        enabled: false
+      search:
+        enabled: true
+        weight: -7
+      embed:
+        enabled: true
+        weight: 7
+      map:
+        enabled: true
+        weight: 8
+field_type: entity_reference_revisions

@@ -1,0 +1,4 @@
+administer country_terms configuration:
+  title: 'Administer country_terms configuration'
+  description: 'Optional description.'
+  restrict access: true

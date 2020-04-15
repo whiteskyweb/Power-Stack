@@ -1,0 +1,52 @@
+uuid: 0d39a327-81c0-456a-b879-d6988d2b82ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_builder
+    - node.type.page
+    - paragraphs.paragraphs_type.column
+  module:
+    - entity_reference_revisions
+id: node.page.field_page_builder
+field_name: field_page_builder
+entity_type: node
+bundle: page
+label: 'Page Builder'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      column: column
+    target_bundles_drag_drop:
+      column:
+        enabled: true
+        weight: 5
+      image:
+        weight: 6
+        enabled: false
+      row:
+        weight: 7
+        enabled: false
+      text:
+        weight: 8
+        enabled: false
+      embed:
+        weight: 14
+        enabled: false
+      map:
+        weight: 17
+        enabled: false
+      search:
+        weight: 21
+        enabled: false
+      stop:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

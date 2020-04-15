@@ -1,0 +1,135 @@
+definitions:
+  seaside_admin_toolbar__seaside_admin_toolbar_form:
+    menu_name: admin
+    parent: system.admin_config_ui
+    weight: 10
+    expanded: false
+    enabled: false
+  admin_toolbar_tools__help:
+    weight: -4
+    menu_name: admin
+    parent: system.admin
+    enabled: true
+    expanded: false
+  system__admin_structure:
+    weight: -9
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__themes_page:
+    weight: -8
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__modules_list:
+    weight: -7
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__admin_config:
+    weight: -6
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  entity__user__collection:
+    weight: -5
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__admin_reports:
+    weight: -3
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  help__main:
+    weight: -2
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  system__admin_index:
+    enabled: false
+    menu_name: admin
+    parent: admin_toolbar_tools.help
+    expanded: false
+    weight: -100
+  admin_toolbar_tools__user__logout:
+    enabled: false
+    menu_name: admin
+    parent: admin_toolbar_tools.help
+    weight: 10
+    expanded: false
+  node__add__campervan:
+    parent: 'menu_link_content:357bca11-629b-4034-9657-126561a6d762'
+    menu_name: admin
+    enabled: true
+    expanded: false
+    weight: 0
+  node__add__flight:
+    weight: 1
+    parent: 'menu_link_content:357bca11-629b-4034-9657-126561a6d762'
+    menu_name: admin
+    expanded: false
+    enabled: true
+  node__add__g_adventures:
+    weight: 2
+    parent: 'menu_link_content:357bca11-629b-4034-9657-126561a6d762'
+    menu_name: admin
+    expanded: false
+    enabled: true
+  node__add__hotel:
+    weight: 3
+    parent: 'menu_link_content:357bca11-629b-4034-9657-126561a6d762'
+    menu_name: admin
+    expanded: false
+    enabled: true
+  node__add__tour:
+    weight: 4
+    parent: 'menu_link_content:357bca11-629b-4034-9657-126561a6d762'
+    menu_name: admin
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__add_content:
+    weight: 2
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+  node__add__holiday:
+    parent: 'menu_link_content:8d6d8dd4-b3f4-4967-a424-e185e0d22e11'
+    menu_name: admin
+    weight: 0
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__add_media:
+    weight: 5
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__view__files:
+    weight: 7
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+  admin_toolbar_tools__media_page:
+    weight: 8
+    menu_name: admin
+    parent: system.admin_content
+    expanded: false
+    enabled: true
+  'admin_toolbar_tools__extra_links:view__files':
+    weight: 1
+    parent: 'admin_toolbar_tools.extra_links:media_page'
+    menu_name: admin
+    enabled: true
+    expanded: false
+_core:
+  default_config_hash: jdY7AU0tU-QsjmiOw3W8vwpYMb-By--_MSFgbqKUTYM

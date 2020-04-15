@@ -1,0 +1,19 @@
+uuid: 36298c03-c232-467d-8a0d-6dc7cef44d00
+langcode: en
+status: true
+dependencies:
+  module:
+    - text
+    - user
+id: user.field_short
+field_name: field_short
+entity_type: user
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

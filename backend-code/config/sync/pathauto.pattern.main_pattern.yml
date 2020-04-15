@@ -1,0 +1,14 @@
+uuid: 2af2e988-47bb-4539-af8b-c7388d600172
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: main_pattern
+label: 'Main pattern'
+type: 'canonical_entities:node'
+pattern: '[node:menu-link]/[node:title]'
+selection_criteria: {  }
+selection_logic: and
+weight: 0
+relationships: {  }

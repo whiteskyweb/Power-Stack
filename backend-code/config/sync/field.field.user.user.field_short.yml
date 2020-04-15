@@ -1,0 +1,30 @@
+uuid: cf8b23b7-61cd-423b-bd87-757551d4df72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_short
+  module:
+    - allowed_formats
+    - text
+    - user
+third_party_settings:
+  allowed_formats:
+    filtered: filtered
+    code: '0'
+    plain_text: '0'
+id: user.user.field_short
+field_name: field_short
+entity_type: user
+bundle: user
+label: 'Short job description'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: '<p><br></p>'
+    format: filtered
+default_value_callback: ''
+settings: {  }
+field_type: text_long

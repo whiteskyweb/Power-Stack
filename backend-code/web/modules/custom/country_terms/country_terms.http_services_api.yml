@@ -1,0 +1,5 @@
+country_terms_services:
+  title: "[YAML] - Countries Import"
+  api_path: "src/api/country_terms_services.yml"
+  config:
+    base_uri: "https://restcountries.eu/rest/v2/"
