@@ -19,13 +19,11 @@
     },
     "autoload": {
         "psr-4": {
-            "PowerStack\\Monorepo\\": "scripts/monorepo",
-            "YourMonorepo\\SecondPackage\\": "packages/second-package/src"
+            "PowerStack\\Monorepo\\": "scripts/monorepo"
         }
     },
     "replace": {
-        "whiteskyweb/power-stack-back-end": "self.version",
-        "your-monorepo/second-package": "self.version"
+        "whiteskyweb/power-stack-back-end": "self.version"
     },
     "scripts": {
         "post-install-cmd": [
