@@ -27,6 +27,5 @@ parameters:
 
     # enable_default_release_workers: false
 
-    # services:
-    #     PowerStack\Monorepo\:
-    #         resource: './scripts/monorepo/'
+    services:
+        PowerStack\Monorepo\: ~
