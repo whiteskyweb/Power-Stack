@@ -4,6 +4,8 @@ parameters:
         require-dev:
             phpunit/phpunit: '^7.3'
             symplify/monorepo-builder: '^7.2'
+    package_directories_excludes:
+        - 'backend-code'
     package_directories:
         - 'backend-code'
         - 'backend-code/web/profiles/contrib/power_stack_distro'
