@@ -6,10 +6,11 @@ parameters:
             symplify/monorepo-builder: '^7.2'
     package_directories:
         - 'backend-code'
+        - 'backend-code/web/profiles/contrib/power_stack_distro'
         - 'scripts'
         - 'infrastructure'
-        # - 'backend-code/web/themes/contrib/seaside_admin'
-        # - 'backend-code/web/modules/contrib/seaside_admin_toolbar'
+        - 'backend-code/web/themes/contrib/seaside_admin'
+        - 'backend-code/web/modules/contrib/seaside_admin_toolbar'
         - 'frontend-code'
 
     # for "split" command
