@@ -20,7 +20,11 @@ following micro-service based architecture:
     
 ## Hosting
 
-
+<p align="center">
+<a href="https://console.platform.sh/projects/create-project?template=https://github.com/whiteskyweb/Power-Stack.git&utm_content=whiteskyweb_power_stack&utm_source=github&utm_medium=button&utm_campaign=deploy_on_platform">
+    <img src="https://platform.sh/images/deploy/lg-blue.svg" alt="Deploy on Platform.sh" width="180px" />
+</a>
+</p>
 
 ## Requirements
 
